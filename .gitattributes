@@ -1,0 +1,7 @@
+# Handle line endings automatically
+* text=auto
+
+# Ensure Jekyll files always use LF (standard for web servers)
+*.md text eol=lf
+*.yml text eol=lf
+*.html text eol=lf

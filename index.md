@@ -1,17 +1,21 @@
 ---
-layout: page
-title: Proactive Software Engineer
+layout: default
+title: Home
 ---
 
-I'm a developer/designer based in [Location]. 
+## About Me
+I am a software engineer focused on building robust and resilient systems. I believe in the philosophy: **"Built to break. Tested to last."**
+
+## Technical Skills
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
 
-## Technical Skills
-<div style="font-size: 40px; display: flex; gap: 20px; flex-wrap: wrap;">
+<div style="font-size: 30px; display: flex; gap: 15px; margin-top: 10px;">
   <i class="devicon-python-plain colored" title="Python"></i>
   <i class="devicon-javascript-plain colored" title="JavaScript"></i>
+  <i class="devicon-cplusplus-plain colored" title="C++"></i>
   <i class="devicon-git-plain colored" title="Git"></i>
+  <i class="devicon-docker-plain colored" title="Docker"></i>
 </div>
 
 ## Featured Projects
@@ -22,5 +26,3 @@ I'm a developer/designer based in [Location].
     </li>
   {% endfor %}
 </ul>
-
-[Download my CV]

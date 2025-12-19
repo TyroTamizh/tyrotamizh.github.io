@@ -1,12 +1,19 @@
 ---
 ---
 
+// 1. Variables
 $primary-color: #3498db;
+$dark-color: #2c3e50;
 $text-color: #333;
-$bg-color: #f4f4f4;
-$max-width: 800px;
+$light-bg: #f9f9f9;
+$max-width: 1000px; // Slightly wider for a modern feel
 
-// 2. Global Styles
+html {
+  scroll-behavior: smooth;
+}
+// 2. Global Reset & Styles
+* { box-sizing: border-box; } // Essential for responsive grids
+
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
   line-height: 1.6;
@@ -15,74 +22,200 @@ body {
   margin: 0;
   padding: 0;
 }
-.hero {
-  padding: 60px 0;
-  text-align: center;
-  background: #f9f9f9;
-  border-radius: 8px;
-  margin-top: 20px;
 
-  h1 { font-size: 2.5rem; margin-bottom: 10px; }
-  p { font-size: 1.2rem; color: #666; }
+section, .hero {
+  min-height: 100vh;      // Full viewport height
+  display: flex;          // Use flex to center content
+  align-items: center;    // Vertical center
+  justify-content: center;// Horizontal center
+  padding: 80px 0;
+  width: 100%;
 }
 
-.btn {
-  display: inline-block;
-  background: #3498db;
-  color: white;
-  padding: 10px 20px;
-  text-decoration: none;
-  border-radius: 5px;
-  margin-top: 15px;
-  
-  &:hover { background: #2980b9; }
+// Reveal Effect Styles
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
+  visibility: hidden;
 }
 
-.nav-links {
-  display: flex;
-  justify-content: flex-end; /* Pushes links to the right */
-  list-style: none;
-  
-  li { margin-left: 20px; }
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
 }
 
-// 3. Layout Container
+/* Fix: Ensure Hero is always visible or fades in instantly */
+.hero .reveal {
+  transition: opacity 1.2s ease-in-out, transform 1.2s ease-in-out;
+}
+
+// Ensure the container inside the flex section stays centered
+section .container {
+  width: 100%;
+}
+
+// Reveal Base
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  will-change: opacity, transform; // Optimizes performance
+}
+
+// When active
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+// Stagger effect: If you have a list or grid, 
+// the cards will appear one by one
+.reveal.active .skill-category {
+  transition-delay: 0.2s;
+}
+
 .container {
   max-width: $max-width;
   margin: 0 auto;
   padding: 0 20px;
 }
 
-// 4. Navigation Bar
-nav {
-  background: $text-color;
+// 3. Header & Navigation
+header {
+  background: #333;
   padding: 1rem 0;
-  
-  ul {
-    display: flex;
-    justify-content: center;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  justify-content: flex-end;
+
+  li { margin-left: 20px; }
+
   a {
     color: white;
     text-decoration: none;
-    padding: 0 15px;
+    font-weight: 600;
+    transition: color 0.3s;
     &:hover { color: $primary-color; }
   }
 }
 
-// 5. Responsive Media Query (For Mobile)
-@media (max-width: 600px) {
-  nav ul {
-    flex-direction: column;
-    text-align: center;
+// 4. Hero Section
+.hero {
+  text-align: center;
+  padding: 100px 0;
+  background: linear-gradient(135deg, $dark-color 0%, $primary-color 100%);
+  color: white;
+
+  h1 { font-size: 3rem; margin: 0 0 10px 0; }
+  .subtitle { font-size: 1.3rem; opacity: 0.9; margin-bottom: 30px; }
+}
+
+// 5. Buttons
+.btn {
+  display: inline-block;
+  background: $primary-color;
+  color: white;
+  padding: 12px 24px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: all 0.3s;
+  border: 2px solid $primary-color;
+  
+  &:hover { 
+    background: darken($primary-color, 10%); 
+    border-color: darken($primary-color, 10%);
+  }
+
+  &.btn-outline {
+    background: transparent;
+    border: 2px solid white;
+    margin-left: 10px;
+    &:hover { background: white; color: $primary-color; }
+  }
+}
+
+// 6. Section Utilities
+section {
+  section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centers content vertically */
+  width: 100%;
+  overflow: hidden; /* Prevents unwanted scrollbars during animation */
+}
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 50px;
+  &::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 3px;
+    background: $primary-color;
+    margin: 15px auto;
+  }
+}
+
+// 7. Grids (Skills & Projects)
+.skills-grid, .project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.skill-category, .project-card {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  border: 1px solid #eee;
+  transition: transform 0.3s, border-color 0.3s;
+
+  &:hover {
+    transform: translateY(-5px);
+    border-color: $primary-color;
   }
   
-  nav a {
-    display: block;
-    padding: 10px 0;
+  h3 { 
+    color: $primary-color; 
+    margin-top: 0; 
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
   }
+  
+  ul { list-style: none; padding: 0; li { margin: 8px 0; color: #555; }}
+}
+
+// 8. Footer
+footer {
+  background: #333;
+  color: white;
+  padding: 40px 0;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+// 9. Mobile Responsiveness
+@media (max-width: 600px) {
+  .hero h1 { font-size: 2.2rem; }
+  
+  .nav-links {
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    li { margin: 10px 0; }
+  }
+
+  .btn.btn-outline { margin-left: 0; margin-top: 10px; display: block; }
 }

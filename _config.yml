@@ -1,5 +1,13 @@
-title: My Custom Site
+title: Tamizh J
 email: your-email@example.com
 description: A site built from the ground up.
 baseurl: "" # Leave empty for GitHub Pages top-level domain
 url: "https://tyrotamizh.github.io"
+
+collections:
+  professional_projects:
+    output: true
+    permalink: /professional/:path/
+  academic_projects:
+    output: true
+    permalink: /academic/:path/

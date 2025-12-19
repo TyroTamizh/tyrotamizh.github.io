@@ -1,18 +1,5 @@
-#Global Variable Center
-
-title: Tamizh Selvan Johnson
+title: My Custom Site
 email: your-email@example.com
-github_username: TyroTamizh
-description: >- # this means to ignore newlines until "baseurl:"
-  Built to break. Tested to last.
-baseurl: "" # the subpath of your site, e.g. /blog
+description: A site built from the ground up.
+baseurl: "" # Leave empty for GitHub Pages top-level domain
 url: "https://tyrotamizh.github.io"
-
-# Build settings
-theme: jekyll-theme-modernist
-plugins:
-  - jekyll-feed
-
-collections:
-  projects:
-    output: true

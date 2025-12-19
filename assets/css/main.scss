@@ -1,0 +1,88 @@
+---
+---
+
+$primary-color: #3498db;
+$text-color: #333;
+$bg-color: #f4f4f4;
+$max-width: 800px;
+
+// 2. Global Styles
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+  color: $text-color;
+  background-color: white;
+  margin: 0;
+  padding: 0;
+}
+.hero {
+  padding: 60px 0;
+  text-align: center;
+  background: #f9f9f9;
+  border-radius: 8px;
+  margin-top: 20px;
+
+  h1 { font-size: 2.5rem; margin-bottom: 10px; }
+  p { font-size: 1.2rem; color: #666; }
+}
+
+.btn {
+  display: inline-block;
+  background: #3498db;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-top: 15px;
+  
+  &:hover { background: #2980b9; }
+}
+
+.nav-links {
+  display: flex;
+  justify-content: flex-end; /* Pushes links to the right */
+  list-style: none;
+  
+  li { margin-left: 20px; }
+}
+
+// 3. Layout Container
+.container {
+  max-width: $max-width;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+// 4. Navigation Bar
+nav {
+  background: $text-color;
+  padding: 1rem 0;
+  
+  ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  a {
+    color: white;
+    text-decoration: none;
+    padding: 0 15px;
+    &:hover { color: $primary-color; }
+  }
+}
+
+// 5. Responsive Media Query (For Mobile)
+@media (max-width: 600px) {
+  nav ul {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  nav a {
+    display: block;
+    padding: 10px 0;
+  }
+}

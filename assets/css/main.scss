@@ -56,20 +56,6 @@ section .container {
   width: 100%;
 }
 
-// Reveal Base
-.reveal {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-  will-change: opacity, transform; // Optimizes performance
-}
-
-// When active
-.reveal.active {
-  opacity: 1;
-  transform: translateY(0);
-}
-
 // Stagger effect: If you have a list or grid, 
 // the cards will appear one by one
 .reveal.active .skill-category {
@@ -142,6 +128,61 @@ header {
   }
 }
 
+.trait {
+  background-color: #555;
+  color: white;
+  padding: 100px 0; // Give the whole section space
+
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6em;
+
+    h1 {
+      font-size: 4rem;
+      margin: 0;
+      white-space: nowrap;
+    }
+
+    .list-wrapper {
+      // This window height is exactly 1.2 times the font size
+      height: 3.8em*4; 
+      overflow: hidden;
+      line-height: 1.5em;
+      position: relative;
+    }
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      // This transition makes the movement look premium
+      transition: transform 0.5s cubic-bezier(0.45, 0.05, 0.55, 0.95);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    li {
+      font-size: 3.2em;
+      height: 2em;      /* Same as wrapper height */
+      line-height: 1em; /* Centers text vertically */
+      margin: 0;
+      padding: 0;
+      font-weight: bold;
+      color: #3498db;
+      white-space: nowrap;
+      transform: scale(0.7);
+      transition: transform 0.5s ease, opacity 0.5s ease;
+    }
+
+    li.active{
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+}
 // 6. Section Utilities
 section {
   section {
@@ -207,14 +248,28 @@ footer {
 }
 
 // 9. Mobile Responsiveness
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .hero h1 { font-size: 2.2rem; }
-  
+  .hide-on-mobile {
+    display: none !important;
+  }
   .nav-links {
     justify-content: center;
     flex-direction: column;
     text-align: center;
     li { margin: 10px 0; }
+  }
+
+  .trait .container {
+    gap: 3em;
+    flex-direction: column;
+    h1 { font-size: 3em; }
+    ul {align-items: center;}
+    li { font-size: 2em; }
+  }
+
+  .list-wrapper{
+    height: 2em*3;
   }
 
   .btn.btn-outline { margin-left: 0; margin-top: 10px; display: block; }

@@ -10,36 +10,58 @@ title: Home
   </div>
 </section>
 
+<section class="trait"> 
+  <div class="container">
+    <h1>I can</h1>
+    <div class="list-wrapper">
+      <ul id="ticker">
+        <li class="hide-on-mobile"></li>
+        <li>Test Applications and APIs</li>
+        <li>Manage defects</li>
+        <li>Write Automation scripts</li>
+        <li>Be a team-player</li>
+        <li>Manage a simple team</li>
+        <li>Build simple application</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
 <section class="alternate-bg">
   <div class="container reveal"> 
     <h2 class="section-title">Technical Toolbox</h2>
     <div class="skills-grid">
+
       <div class="skill-category">
-        <h3>Frontend</h3>
+        <h3>Code speak</h3>
         <ul>
-          <li>HTML5 & CSS3</li>
-          <li>JavaScript (ES6+)</li>
-          <li>Responsive Design</li>
+          <li>Python</li>
+          <li>Java</li>
+          <li>C#</li>
+          <li>JavaScript</li>
+          <li>HTML</li>
+          <li>CSS / SCSS</li>
         </ul>
       </div>
 
       <div class="skill-category">
-        <h3>Automation & Tools</h3>
+        <h3>Automation Frameworks</h3>
         <ul>
-          <li>Jekyll & Static Sites</li>
-          <li>Git & Version Control</li>
-          <li>VS Code & Terminal</li>
+          <li>Selenium - TestNG (Java / Python) </li>
+          <li>Playwright (JS)</li>
+          <li>Robot Framework</li>
         </ul>
       </div>
 
       <div class="skill-category">
-        <h3>Testing Strategy</h3>
+        <h3>Tech Bundles</h3>
         <ul>
-          <li>Test Planning</li>
-          <li>Bug Tracking</li>
-          <li>CI/CD Basics</li>
+          <li>Numpy</li>
+          <li>Scikit-Learn</li>
+          <li>Jekyll</li>
         </ul>
       </div>
+
     </div>
   </div>
 </section>

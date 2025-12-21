@@ -15,7 +15,7 @@ title: Home
     <h1>I can</h1>
     <div class="list-wrapper">
       <ul id="ticker">
-        <li class="hide-on-mobile"></li>
+      <li></li>
         <li>Test Applications and APIs</li>
         <li>Manage defects</li>
         <li>Write Automation scripts</li>
@@ -23,6 +23,25 @@ title: Home
         <li>Manage a simple team</li>
         <li>Build simple application</li>
       </ul>
+    </div>
+  </div>
+</section>
+
+<section class="work">
+  <div class="container">
+    <h1>Worked at</h1>
+    
+    <div class="work-carousel">
+      <div class="company-card" id="card-wipro" onclick="revealRoles('wipro')">
+        <img src="{{ '/assets/images/wipro.svg' | relative_url }}" alt="Wipro">
+      </div>
+
+      <div class="roles-display" id="roles-display">
+        </div>
+
+      <div class="company-card" id="card-tcs" onclick="revealRoles('tcs')">
+        <img src="{{ '/assets/images/tcs.svg' | relative_url }}" alt="TCS">
+      </div>
     </div>
   </div>
 </section>

@@ -75,7 +75,17 @@ section .container {
 // 3. Header & Navigation
 header {
   background: #333;
-  padding: 1rem 0;
+  padding: 0.5rem 0; // Thinner header
+  position: sticky;  // Optional: keeps it at top as you scroll
+  top: 0;
+  z-index: 1000;
+
+  .nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 60px;
+  }
 }
 
 .nav-links {
@@ -83,20 +93,37 @@ header {
   list-style: none;
   margin: 0;
   padding: 0;
-  justify-content: flex-end;
 
   li {
-    margin-left: 20px;
+    margin-left: 25px;
   }
 
   a {
     color: white;
     text-decoration: none;
     font-weight: 600;
+    font-size: 0.95rem;
     transition: color 0.3s;
     &:hover {
       color: $primary-color;
     }
+  }
+}
+
+.hamburger {
+  display: none; // Hidden on desktop
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+  padding: 10px;
+
+  span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background: white;
+    border-radius: 3px;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   }
 }
 
@@ -147,21 +174,22 @@ header {
 }
 
 .trait {
-  background-color: #555;
+  background-color: #333; // Slightly lighter than the Work section for depth
   color: white;
-  padding: 100px 0; // Give the whole section space
 
   .container {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 6em;
+    justify-content: space-between; // Pushes "I Can" to left and list to right
+    max-width: 900px; 
+    margin: 0 auto;
+  }
 
     h1 {
-      font-size: 4rem;
-      margin: 0;
-      white-space: nowrap;
-    }
+    font-size: 4rem;
+    flex: 1;
+    text-align: left;
+  }
 
     .list-wrapper {
       // This window height is exactly 1.2 times the font size
@@ -201,7 +229,6 @@ header {
       opacity: 1;
     }
   }
-}
 
 .work {
   padding: 80px 0;
@@ -236,40 +263,33 @@ header {
     }
   }
 
-  .roles-display {
+ .roles-display {
   width: 0;
   opacity: 0;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center; /* Centers text vertically and horizontally */
-  border-left: 0px solid #3498db;
-  border-right: 0px solid #3498db;
+  align-items: center;
   transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-  
-  /* Initial border state (invisible) */
-  border-left: 0px solid #3498db;
-  border-right: 0px solid #3498db;
-  box-shadow: inset 0 0 0 transparent;
+  white-space: nowrap; // Keeps text on one line during expansion
 
   &.open {
     width: 380px;
     opacity: 1;
+    padding: 0 20px;
     
-    // Desktop Glows
     &.active-wipro {
-      border-left: 3px solid #3498db;
-      /* Only glow on the left side */
+      border-left: 3px solid $primary-color;
       box-shadow: -10px 0 20px -10px rgba(52, 152, 219, 0.5);
     }
     
     &.active-tcs {
-      border-right: 3px solid #3498db;
-      /* Only glow on the right side */
+      border-right: 3px solid $primary-color;
       box-shadow: 10px 0 20px -10px rgba(52, 152, 219, 0.5);
     }
   }
+}
 
   .role-text {
     color: #3498db;
@@ -307,17 +327,16 @@ header {
   50% { transform: scale(1.15); filter: drop-shadow(0 0 10px rgba(52, 152, 219, 0.4)); }
   100% { transform: scale(1.1); filter: drop-shadow(0 0 0px rgba(52, 152, 219, 0)); }
 }
-}
 // 6. Section Utilities
 section {
-  section {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Centers content vertically */
-    width: 100%;
-    overflow: hidden; /* Prevents unwanted scrollbars during animation */
-  }
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 80px 0;
+  width: 100%;
+  overflow: hidden; 
 }
 
 .section-title {
@@ -334,11 +353,17 @@ section {
 }
 
 // 7. Grids (Skills & Projects)
-.skills-grid,
-.project-grid {
+.skills-grid {
   display: grid;
+  // Desktop: 3 columns if space allows
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 30px;
+
+  @media (max-width: 480px) {
+    // Mobile: Force 1 column and let it shrink as much as needed
+    grid-template-columns: 1fr; 
+    gap: 20px;
+  }
 }
 
 .skill-category,
@@ -365,11 +390,30 @@ section {
   ul {
     list-style: none;
     padding: 0;
+    display: flex;       // Change from block to flex
+    flex-wrap: wrap;     // Allow pills to wrap to next line
+    gap: 10px;           // Space between pills
+    margin-top: 15px;
+
     li {
-      margin: 8px 0;
-      color: #555;
+      margin: 0;         // Remove old margins
+      background: rgba($primary-color, 0.1); // Light blue tint
+      color: $primary-color;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      border: 1px solid rgba($primary-color, 0.2);
+      transition: all 0.3s ease;
+
+      &:hover {
+        background: $primary-color;
+        color: white;
+        transform: translateY(-2px);
+      }
     }
   }
+  
 }
 
 // 8. Footer
@@ -386,20 +430,15 @@ footer {
   .hero h1 {
     font-size: 2.2rem;
   }
-  .nav-links {
-    justify-content: center;
-    flex-direction: column;
-    text-align: center;
-    li {
-      margin: 10px 0;
-    }
-  }
 
   .trait .container {
-    gap: 3em;
     flex-direction: column;
+    text-align: center;
+    gap: 1em;
+    
     h1 {
-      font-size: 3em;
+      font-size: 3rem;
+      text-align: center;
     }
     ul {
       align-items: center;
@@ -462,4 +501,46 @@ footer {
     margin-top: 10px;
     display: block;
   }
+
+  .hamburger {
+    display: flex !important; // Ensure icon shows up
+    z-index: 1001;
+  }
+
+  // Hamburger Animation to X
+  .hamburger.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+  .hamburger.active span:nth-child(2) { opacity: 0; transform: translateX(-20px); }
+  .hamburger.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+  .nav-links {
+    display: flex !important; // Ensure it's a flex container
+    position: fixed;
+    top: 0;
+    right: -100%; // Default hidden state
+    width: 250px;
+    height: 100vh;
+    background: #222;
+    flex-direction: column;
+    justify-content: center;
+    transition: right 0.4s ease-in-out;
+    z-index: 1000;
+
+    // When the JS adds this class, it must move to 0
+    &.active {
+      right: 0 !important; 
+    }
+
+    li {
+      margin: 20px 0;
+      width: 100%;
+      text-align: center;
+      
+      a {
+        font-size: 1.2rem;
+        display: block;
+        padding: 10px;
+      }
+    }
+  }
+
 }

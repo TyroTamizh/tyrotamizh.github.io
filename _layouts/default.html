@@ -3,22 +3,30 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
     <title>{{ page.title }} | {{ site.title }}</title>
-    
     <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
   </head>
   <body>
 
     <header>
-      <nav>
-        <div class="container">
-          <ul class="nav-links">
-            {% for item in site.data.navigation %}
-              <li><a href="{{ item.link | relative_url }}">{{ item.name }}</a></li>
-            {% endfor %}
-          </ul>
+      <nav class="container nav-container">
+        <div class="logo">
+          <a href="{{ '/' | relative_url }}" style="color: white; text-decoration: none;">
+            {{ site.title }}
+          </a>
         </div>
+
+        <div class="hamburger" id="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+        <ul class="nav-links" id="nav-links">
+          {% for item in site.data.navigation %}
+            <li><a href="{{ item.link | relative_url }}">{{ item.name }}</a></li>
+          {% endfor %}
+        </ul>
       </nav>
     </header>
 

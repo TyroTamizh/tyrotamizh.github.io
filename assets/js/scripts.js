@@ -107,9 +107,32 @@
 
     }, 50);
   }
+
+  // Section 4 : Hamburger section
+  // Add this inside your DOMContentLoaded wrapper
+const hamburger = document.querySelector('.hamburger');
+const navLinks = document.querySelector('.nav-links');
+
+console.log("Hamburger found:", hamburger); // This will tell us if JS sees the button
+
+if (hamburger) {
+  hamburger.onclick = function(e) {
+    e.stopPropagation(); // Stop the click from "bleeding" to the body
+    this.classList.toggle('active');
+    navLinks.classList.toggle('active');
+    console.log("Hamburger clicked!"); 
+  };
+}
+
+// Close menu when clicking any link inside
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.onclick = () => {
+    hamburger.classList.remove('active');
+    navLinks.classList.remove('active');
+  };
+});
+
 };
-
-
 
 // Helper function to close the section
 function closeWorkSection() {

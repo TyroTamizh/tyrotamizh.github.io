@@ -1,159 +1,123 @@
-  document.addEventListener("DOMContentLoaded", function() {
-  
-  // --- PART 1: Scroll Reveal Logic ---
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: "0px 0px -50px 0px" 
-  };
+document.addEventListener("DOMContentLoaded", () => {
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("active");
-      } else {
-        entry.target.classList.remove("active");
-      }
-    });
-  }, observerOptions);
-
-  const revealElements = document.querySelectorAll(".reveal");
-  revealElements.forEach((el) => observer.observe(el));
-  
-  const hero = document.querySelector(".hero .reveal");
-  if (hero) {
-    hero.classList.add("active");
-  }
-
-  // --- PART 2: Vertical Ticker Logic ---
-  const ticker = document.getElementById('ticker');
-  const wrapper = document.querySelector('.list-wrapper');
-  if (ticker && wrapper) {
-    const listItems = ticker.querySelectorAll('li');
-    let currentIndex = 0;
-
-    function moveTicker() {      
-      // 2. Reset if at the end
-      if (currentIndex == listItems.length-1) {
-        listItems[currentIndex].classList.remove('active');
-        currentIndex = 0;
-      }
-
-      listItems[currentIndex+1].classList.add('active');
-      listItems[currentIndex].classList.remove('active');
-      // 3. GET DYNAMIC HEIGHT
-      // This measures the exact height of the LI in the browser right now
-      const stepHeight = listItems[currentIndex].offsetHeight;
-      
-      // 4. APPLY TRANSFORM
-      ticker.style.transform = `translateY(-${currentIndex * stepHeight}px)`;
-      currentIndex++;
+  /* =====================================================
+   * 1. Scroll Reveal
+   * ===================================================== */
+  const revealObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(({ isIntersecting, target }) => {
+        target.classList.toggle("active", isIntersecting);
+      });
+    },
+    {
+      threshold: 0.1,
+      rootMargin: "0px 0px -50px 0px",
     }
-    // Run every 2.5 seconds
+  );
+
+  document.querySelectorAll(".reveal").forEach(el =>
+    revealObserver.observe(el)
+  );
+
+  // Ensure hero content is visible immediately
+  document.querySelector(".hero .reveal")?.classList.add("active");
+
+
+  /* =====================================================
+   * 2. Vertical Ticker
+   * ===================================================== */
+  const ticker = document.getElementById("ticker");
+  const listWrapper = document.querySelector(".list-wrapper");
+
+  if (ticker && listWrapper) {
+    const items = ticker.querySelectorAll("li");
+    let index = 0;
+
+    const moveTicker = () => {
+      items[index].classList.remove("active");
+
+      index = (index + 1) % items.length;
+
+      items[index].classList.add("active");
+
+      const itemHeight = items[index].offsetHeight;
+      ticker.style.transform = `translateY(-${index * itemHeight}px)`;
+    };
+
     setInterval(moveTicker, 2500);
   }
 
-  // Secction 3 : Work
- window.revealRoles = function(company) {
-  const display = document.getElementById('roles-display');
-  const wiproCard = document.getElementById('card-wipro');
-  const tcsCard = document.getElementById('card-tcs');
+
+  /* =====================================================
+   * 3. Work Section (Roles)
+   * ===================================================== */
+  const rolesDisplay = document.getElementById("roles-display");
+  const carousel = document.querySelector(".work-carousel");
+
+  const cards = {
+    wipro: document.getElementById("card-wipro"),
+    tcs: document.getElementById("card-tcs"),
+  };
 
   const roles = {
     wipro: `
-      <span class="role-text">Senior QA Engineer</span>
-      <span class="role-date">Oct 2021 — Present</span>
+      <center><span class="role-text">Senior QA Engineer</span><br>
+      <span class="role-date">Oct 2021 — Present</span></center>
     `,
     tcs: `
-      <span class="role-text">IT Analyst / Module Lead</span>
-      <span class="role-date">Jan 2019 — Sept 2021</span>
-      <span class="role-text">System Engineer / QA Analyst</span>
-      <span class="role-date">June 2015 — Dec 2018</span>
-    `
+      <center><span class="role-text">IT Analyst / Module Lead</span><br>
+      <span class="role-date">Jan 2019 — Sept 2021</span><br><br>
+      <span class="role-text">System Engineer / QA Analyst</span><br>
+      <span class="role-date">June 2015 — Dec 2018</span></center>
+    `,
   };
 
-  const isAlreadyActive = (company === 'wipro' && wiproCard.classList.contains('active')) || 
-                          (company === 'tcs' && tcsCard.classList.contains('active'));
+  window.revealRoles = (company) => {
+    const selectedCard = cards[company];
+    const isActive = selectedCard.classList.contains("active");
 
-  if (isAlreadyActive) {
-    closeWorkSection();
-  } else {
-    // Reset classes first for a clean switch
-    display.classList.remove('open', 'active-wipro', 'active-tcs');
-    wiproCard.classList.remove('active');
-    tcsCard.classList.remove('active');
+    if (isActive) {
+      closeWorkSection();
+      return;
+    }
 
-   // 1. Initial reset timeout (existing)
+    resetWorkSection();
+
     setTimeout(() => {
-      if (company === 'wipro') {
-        wiproCard.classList.add('active');
-        display.classList.add('active-wipro');
-      } else {
-        tcsCard.classList.add('active');
-        display.classList.add('active-tcs');
-      }
+      selectedCard.classList.add("active");
+      rolesDisplay.classList.add(`active-${company}`);
+      rolesDisplay.innerHTML = roles[company];
+      rolesDisplay.classList.add("open");
 
-      display.innerHTML = roles[company];
-      display.classList.add('open');
-
-      // 2. New Scroll Timeout (Added inside the first one)
-      // We wait 300ms so the "open" animation has physically moved the logos apart
       setTimeout(() => {
-        const carousel = document.querySelector('.work-carousel');
-        carousel.scrollIntoView({
-          behavior: 'smooth',
-          block: 'center'
+        carousel?.scrollIntoView({
+          behavior: "smooth",
+          block: "center",
         });
       }, 350);
-
     }, 50);
-  }
-
-  // Section 4 : Hamburger section
-  // Add this inside your DOMContentLoaded wrapper
-const hamburger = document.querySelector('.hamburger');
-const navLinks = document.querySelector('.nav-links');
-
-console.log("Hamburger found:", hamburger); // This will tell us if JS sees the button
-
-if (hamburger) {
-  hamburger.onclick = function(e) {
-    e.stopPropagation(); // Stop the click from "bleeding" to the body
-    this.classList.toggle('active');
-    navLinks.classList.toggle('active');
-    console.log("Hamburger clicked!"); 
   };
-}
 
-// Close menu when clicking any link inside
-document.querySelectorAll('.nav-links a').forEach(link => {
-  link.onclick = () => {
-    hamburger.classList.remove('active');
-    navLinks.classList.remove('active');
+  const resetWorkSection = () => {
+    rolesDisplay.classList.remove("open", "active-wipro", "active-tcs");
+    Object.values(cards).forEach(card => card.classList.remove("active"));
   };
-});
 
-};
+  const closeWorkSection = () => {
+    resetWorkSection();
+  };
 
-// Helper function to close the section
-function closeWorkSection() {
-  const display = document.getElementById('roles-display');
-  const wiproCard = document.getElementById('card-wipro');
-  const tcsCard = document.getElementById('card-tcs');
-  
-  display.classList.remove('open', 'active-wipro', 'active-tcs');
-  wiproCard.classList.remove('active');
-  tcsCard.classList.remove('active');
-}
 
-// THE CLICK-AWAY LISTENER
-document.addEventListener('click', function(event) {
-  const carousel = document.querySelector('.work-carousel');
-  const display = document.getElementById('roles-display');
-
-  // If the display is open AND the user clicks outside the carousel container
-  if (display.classList.contains('open') && !carousel.contains(event.target)) {
-    closeWorkSection();
-  }
-});
+  /* =====================================================
+   * 4. Click Outside to Close
+   * ===================================================== */
+  document.addEventListener("click", (e) => {
+    if (
+      rolesDisplay.classList.contains("open") &&
+      !carousel.contains(e.target)
+    ) {
+      closeWorkSection();
+    }
+  });
 
 });

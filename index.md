@@ -15,7 +15,6 @@ title: Home
     <h1>I can</h1>
     <div class="list-wrapper">
       <ul id="ticker">
-      <li></li>
         <li>Test Applications and APIs</li>
         <li>Manage defects</li>
         <li>Write Automation scripts</li>

@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const isActive = selectedCard.classList.contains("active");
 
     if (isActive) {
-      closeWorkSection();
+      resetWorkSection();
       return;
     }
 
@@ -102,12 +102,6 @@ document.addEventListener("DOMContentLoaded", () => {
     rolesDisplay.classList.remove("open", "active-wipro", "active-tcs");
     Object.values(cards).forEach(card => card.classList.remove("active"));
   };
-
-  const closeWorkSection = () => {
-    resetWorkSection();
-  };
-
-
   /* =====================================================
    * 4. Click Outside to Close
    * ===================================================== */

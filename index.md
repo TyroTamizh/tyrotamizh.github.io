@@ -45,9 +45,9 @@ title: Home
   </div>
 </section>
 
-<section class="alternate-bg">
+<section class="skills">
   <div class="container reveal"> 
-    <h2 class="section-title">Technical Toolbox</h2>
+    <h1 class="section-title">Technical Toolbox</h1>
     <div class="skills-grid">
 
       <div class="skill-category">

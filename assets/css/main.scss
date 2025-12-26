@@ -5,12 +5,12 @@
 // 1. Variables
 // ============================
 $max-width: 1000px;
-$bgColor-dark: #000814;
-$bgColor-light: #ffd60a; 
-$dark-text-color: #052d52;
-$light-text-color: #FFD60A ;
-$dark-accent: #001d3d;
-$light-accent: #ffc300;
+$darkbgColor: #0b2e33;
+$lightbgColor: #4f7c82;
+$darkTextColor: #93b1b5;
+$lightTextColor: #b8e3e9;
+$accent1: #b8e3e9; // Hover, Underline, badges
+$accent2: #0b2e33; // Heading, Borders, icons..
 // ============================
 // 2. Base & Reset
 // ============================
@@ -24,10 +24,11 @@ html {
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
+    sans-serif;
   line-height: 1.6;
-  color: $dark-text-color;
-  background-color: $bgColor-light;
+  color: $lightTextColor;
+  background-color: $darkbgColor;
 }
 
 .container {
@@ -35,7 +36,6 @@ body {
   margin: 0 auto;
   padding: 0 20px;
 }
-
 
 // ============================
 // 3. Sections
@@ -50,21 +50,6 @@ section,
   width: 100%;
   overflow: hidden;
 }
-
-.section-title {
-  text-align: center;
-  margin-bottom: 50px;
-
-  &::after {
-    content: "";
-    display: block;
-    width: 50px;
-    height: 3px;
-    margin: 15px auto;
-    background: $dark-accent;
-  }
-}
-
 
 // ============================
 // 4. Reveal Animations
@@ -86,7 +71,6 @@ section,
   transition: opacity 1.2s ease, transform 1.2s ease;
 }
 
-
 // ============================
 // 5. Header & Navigation
 // ============================
@@ -94,7 +78,7 @@ header {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: rgba($bgColor-light, 0.5);
+  background: rgba($darkbgColor, 0.5);
   padding: 0.5rem 0;
 
   .nav-container {
@@ -102,10 +86,10 @@ header {
     justify-content: space-between;
     align-items: center;
     min-height: 60px;
-    
-    a{
-      color: $dark-text-color;
-    text-decoration: none;
+
+    a {
+      color: $lightTextColor;
+      text-decoration: none;
     }
   }
 }
@@ -121,27 +105,26 @@ header {
   }
 
   a {
-    color: $dark-text-color;
+    color: $lightTextColor;
     text-decoration: none;
     font-weight: 600;
     font-size: 0.95rem;
     transition: color 0.3s;
 
     &:hover {
-      color: $light-accent;
+      color: $accent2;
       font-weight: bold;
     }
   }
 }
-
 
 // ============================
 // 6. Hero
 // ============================
 .hero {
   text-align: center;
-  color: $light-accent;
-  background: linear-gradient(135deg,$dark-accent,$bgColor-dark);
+  color: $lightTextColor;
+  background: $darkbgColor;
 
   h1 {
     font-size: 3.5rem;
@@ -155,7 +138,6 @@ header {
   }
 }
 
-
 // ============================
 // 7. Buttons
 // ============================
@@ -165,35 +147,24 @@ header {
   border-radius: 5px;
   font-weight: bold;
   text-decoration: none;
-  border: 2px solid $bgColor-light;
-  background: $bgColor-light;
-  color: $dark-text-color;
-  transition: all 0.3s;
+  box-shadow: 0 0 4px 3px $accent1;
+  background: $accent1;
+  color: $accent2;
+  transition: all 0.4s;
 
   &:hover {
-    background: darken($bgColor-light, 10%);
-    border-color: darken($bgColor-light, 10%);
-  }
-
-  &.btn-outline {
-    background: transparent;
-    border-color: #fff;
-    margin-left: 10px;
-
-    &:hover {
-      background: #fff;
-      color: $bgColor-light;
-    }
+    background: $accent2;
+    color: $lightTextColor;
+    box-shadow: inset 0 0 3px $accent1, 0 0 4px $accent1;
   }
 }
-
 
 // ============================
 // 8. Trait Section
 // ============================
 .trait {
-  background: $bgColor-light;
-  color: $dark-text-color;
+  background: $lightbgColor;
+  color: $darkTextColor;
 
   .container {
     display: flex;
@@ -222,30 +193,30 @@ header {
   li {
     font-size: 3.2em;
     font-weight: bold;
-    color: $dark-text-color;
     transform: scale(0.7);
     opacity: 0.25;
     transition: transform 0.5s, opacity 0.5s;
+    color: #1c3c3c;
 
     &.active {
       transform: scale(1);
       opacity: 1;
+      //text-shadow: 0 0 10px $accent2;
     }
   }
 }
-
 
 // ============================
 // 9. Work Section
 // ============================
 .work {
-  background: $bgColor-dark;
+  background: $darkbgColor;
+  color: $lightTextColor;
   text-align: center;
   padding: 80px 0;
 
-  h1{
+  h1 {
     font-size: 3.5rem;
-    color: $light-text-color;
   }
 
   .work-carousel {
@@ -262,16 +233,12 @@ header {
 
     img {
       width: 120px;
-      filter: grayscale(100%) opacity(0.5);
+      filter: grayscale(100%) opacity(0.5) drop-shadow(0 0 0.25px $accent1);
       transition: all 0.5s;
     }
 
     &.active {
-      transform: scale(1.1);
-
-      img {
-        filter: none;
-      }
+      transform: scale(1);
     }
   }
 
@@ -287,14 +254,13 @@ header {
       padding: 0 20px;
     }
 
-    .role-text{
+    .role-text {
       font-weight: bold;
-      color: $bgColor-light;
+      color: $accent1;
       font-size: 1.5rem;
     }
   }
 }
-
 
 // ============================
 // 10. Skills / Projects
@@ -305,13 +271,33 @@ header {
   gap: 30px;
 }
 
+.section-title {
+  text-align: center;
+  margin-bottom: 50px;
+  color: $darkbgColor;
+
+  &::after {
+    content: "";
+    display: block;
+    width: 50px;
+    height: 3px;
+    margin: 15px auto;
+    background: $accent1;
+  }
+}
+
+.skills {
+  background-color: $lightbgColor;
+}
+
 .skill-category,
 .project-card {
-  background: $bgColor-dark;
+  background: $lightbgColor;
   padding: 30px;
   border-radius: 10px;
-  border: 1px solid $light-accent;
+  border: 1px solid $accent1;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  color: $darkbgColor;
 
   ul {
     list-style: none;
@@ -322,26 +308,24 @@ header {
   }
 
   li {
-    background: rgba($bgColor-light, 0.1);
-    color: $bgColor-light;
+    background: $accent1;
+    color: #122a2c;
     padding: 6px 14px;
     border-radius: 20px;
     font-size: 0.9rem;
   }
 }
 
-
 // ============================
 // 11. Footer
 // ============================
 footer {
-  background: #333;
-  color: #fff;
+  background: $darkbgColor;
+  color: $lightTextColor;
   padding: 40px 0;
   text-align: center;
   font-size: 0.9rem;
 }
-
 
 // ============================
 // 12. Mobile
@@ -367,13 +351,40 @@ footer {
     font-size: 3.5rem;
   }
 
-  .trait .container {
-    flex-direction: column;
-    text-align: center;
+  .trait {
+    .container {
+      flex-direction: column;
+      text-align: center;
+      gap: 2em;
+    }
+
+    h1{
+      font-size: 2.5rem;
+    }
+    
+    ul{
+      padding: 2.2rem 0 0 0;
+    }
+
+    li{
+      font-size: 2rem;
+    }
+
+    .list-wrapper{
+      height: 3.2rem *3;
+    }
+    &.active {
+      transform: scale(0.9);
+    }
   }
 
   .btn.btn-outline {
     margin: 10px 0 0;
     display: block;
   }
+
+  .work-carousel{
+    flex-direction: column;
+  }
+
 }

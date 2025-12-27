@@ -88,13 +88,6 @@ document.addEventListener("DOMContentLoaded", () => {
       rolesDisplay.classList.add(`active-${company}`);
       rolesDisplay.innerHTML = roles[company];
       rolesDisplay.classList.add("open");
-
-      setTimeout(() => {
-        carousel?.scrollIntoView({
-          behavior: "smooth",
-          block: "center",
-        });
-      }, 350);
     }, 50);
   };
 
@@ -110,7 +103,7 @@ document.addEventListener("DOMContentLoaded", () => {
       rolesDisplay.classList.contains("open") &&
       !carousel.contains(e.target)
     ) {
-      closeWorkSection();
+      resetWorkSection();
     }
   });
 

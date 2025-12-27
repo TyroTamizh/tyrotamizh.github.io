@@ -53,30 +53,27 @@ title: Home
       <div class="skill-category">
         <h3>Code speak</h3>
         <ul>
-          <li>Python</li>
-          <li>Java</li>
-          <li>C#</li>
-          <li>JavaScript</li>
-          <li>HTML</li>
-          <li>CSS / SCSS</li>
+          {% for skill in site.data.swLang %}
+            <li>{{ skill.name }}</li>
+          {% endfor %}
         </ul>
       </div>
 
       <div class="skill-category">
-        <h3>Automation Frameworks</h3>
+        <h3>Frameworks</h3>
         <ul>
-          <li>Selenium - TestNG (Java / Python) </li>
-          <li>Playwright (JS)</li>
-          <li>Robot Framework</li>
+          {% for skill in site.data.framework %}
+            <li>{{ skill.name }}</li>
+          {% endfor %}
         </ul>
       </div>
 
       <div class="skill-category">
         <h3>Tech Bundles</h3>
         <ul>
-          <li>Numpy</li>
-          <li>Scikit-Learn</li>
-          <li>Jekyll</li>
+          {% for skill in site.data.bundle %}
+            <li>{{ skill.name }}</li>
+          {% endfor %}
         </ul>
       </div>
 

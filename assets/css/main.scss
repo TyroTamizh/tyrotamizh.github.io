@@ -367,16 +367,16 @@ footer {
     }
 
     li{
-      font-size: 30px;
+      font-size: 24px;
       opacity: 0.15;
     }
 
     .list-wrapper{
-      height: 180px;
+      height: 200px;
       background-color: pink;
     }
     &.active {
-      transform: scale(0.75);
+      transform: scale(0.55);
     }
   }
 

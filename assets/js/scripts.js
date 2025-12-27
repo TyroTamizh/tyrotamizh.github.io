@@ -41,6 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
       items[index].classList.add("active");
 
       const itemHeight = items[index].offsetHeight;
+      items[index].innerHTML += items[index].offsetHeight;
       ticker.style.transform = `translateY(-${index * itemHeight}px)`;
     };
 

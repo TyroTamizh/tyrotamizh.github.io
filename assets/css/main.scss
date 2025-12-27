@@ -363,18 +363,20 @@ footer {
     }
     
     ul{
-      padding: 0;
+      padding: 50px 0 0 0;
     }
 
     li{
-      font-size: 1.5rem;
+      font-size: 30px;
+      opacity: 0.15;
     }
 
     .list-wrapper{
-      height: 3.2rem *3;
+      height: 180px;
+      background-color: pink;
     }
     &.active {
-      transform: scale(0.9);
+      transform: scale(0.75);
     }
   }
 

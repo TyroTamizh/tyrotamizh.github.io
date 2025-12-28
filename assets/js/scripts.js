@@ -1,5 +1,27 @@
 document.addEventListener("DOMContentLoaded", () => {
 
+  // Typing metadata
+  const text = " Tamizh";
+  const speed = 150; // Milliseconds per character
+  const typewriter = document.getElementById("typewriter");
+  const delayedElements = document.querySelectorAll(".fade-in-delayed");
+  
+  let i = 0;
+
+  function type() {
+    if (i < text.length) {
+      typewriter.textContent += text.charAt(i);
+      i++;
+      setTimeout(type, speed);
+    } else {
+      // Once typing is done, show the subtitle and buttons
+      delayedElements.forEach(el => el.classList.add("visible"));
+    }
+  }
+
+  // Start typing after a small initial delay
+  setTimeout(type, 800);
+
   /* =====================================================
    * 1. Scroll Reveal
    * ===================================================== */
@@ -47,64 +69,38 @@ document.addEventListener("DOMContentLoaded", () => {
     setInterval(moveTicker, 2500);
   }
 
-
-  /* =====================================================
-   * 3. Work Section (Roles)
-   * ===================================================== */
-  const rolesDisplay = document.getElementById("roles-display");
-  const carousel = document.querySelector(".work-carousel");
-
-  const cards = {
-    wipro: document.getElementById("card-wipro"),
-    tcs: document.getElementById("card-tcs"),
-  };
-
-  const roles = {
-    wipro: `
-      <center><span class="role-text">Senior QA Engineer</span><br>
-      <span class="role-date">Oct 2021 — Present</span></center>
-    `,
-    tcs: `
-      <center><span class="role-text">IT Analyst / Module Lead</span><br>
-      <span class="role-date">Jan 2019 — Sept 2021</span><br><br>
-      <span class="role-text">System Engineer / QA Analyst</span><br>
-      <span class="role-date">June 2015 — Dec 2018</span></center>
-    `,
-  };
-
-  window.revealRoles = (company) => {
-    const selectedCard = cards[company];
-    const isActive = selectedCard.classList.contains("active");
-
-    if (isActive) {
-      resetWorkSection();
-      return;
-    }
-
-    resetWorkSection();
-
-    setTimeout(() => {
-      selectedCard.classList.add("active");
-      rolesDisplay.classList.add(`active-${company}`);
-      rolesDisplay.innerHTML = roles[company];
-      rolesDisplay.classList.add("open");
-    }, 50);
-  };
-
-  const resetWorkSection = () => {
-    rolesDisplay.classList.remove("open", "active-wipro", "active-tcs");
-    Object.values(cards).forEach(card => card.classList.remove("active"));
-  };
-  /* =====================================================
-   * 4. Click Outside to Close
-   * ===================================================== */
-  document.addEventListener("click", (e) => {
-    if (
-      rolesDisplay.classList.contains("open") &&
-      !carousel.contains(e.target)
-    ) {
-      resetWorkSection();
+  /* Add this to your existing scroll reveal logic */
+const staggerObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      const cards = entry.target.querySelectorAll('.skill-category');
+      cards.forEach((card, index) => {
+        setTimeout(() => {
+          card.style.opacity = "1";
+          card.style.transform = "translateY(0)";
+        }, index * 150); // 150ms delay between each card
+      });
     }
   });
+}, { threshold: 0.2 });
+
+const skillsGrid = document.querySelector('.skills-grid');
+if (skillsGrid) {
+  // Initialize cards to be invisible
+  skillsGrid.querySelectorAll('.skill-category').forEach(card => {
+    card.style.opacity = "0";
+    card.style.transform = "translateY(20px)";
+    card.style.transition = "all 0.5s ease-out";
+  });
+  staggerObserver.observe(skillsGrid);
+}
+
+//Adding Current date to footer
+const dateElement = document.getElementById('current-date');
+  if (dateElement) {
+    const today = new Date();
+    const options = { year: 'numeric', month: 'short', day: 'numeric' };
+    dateElement.textContent = today.toLocaleDateString('en-IN', options).toUpperCase();
+  }
 
 });

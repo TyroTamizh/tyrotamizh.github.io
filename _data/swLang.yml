@@ -1,6 +1,12 @@
 - name: Python
+  level: 80%
 - name: Java
+  level: 55%
 - name: C#
+  level: 50%
 - name: JavaScript
+  level: 73%
 - name: HTML
+  level: 85%
 - name: CSS / SCSS
+  level: 75%

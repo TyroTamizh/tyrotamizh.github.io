@@ -1,8 +1,12 @@
-- name: Home
-  link: /
-- name: Projects
-  link: /projects
-- name: About
-  link: /about
-- name: Contact
-  link: /contact
+- title: Home
+  url: /
+  path: "~ /home"
+- title: Projects
+  url: /projects
+  path: "~ /projects"
+- title: About
+  url: /about
+  path: "~ /about"
+- title: Contact
+  url: /contact
+  path: "~ /contact"

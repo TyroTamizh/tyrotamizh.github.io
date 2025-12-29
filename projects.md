@@ -3,7 +3,7 @@ layout: default
 title: My Projects
 ---
 
-<section class="projects-section" style="display: block; padding-top: 100px;">
+<section id="Works" class="projects-section" style="display: block; padding-top: 100px;">
   <div class="container reveal">
     <h1 class="section-title">/home/tamizh/portfolio/projects</h1>
 

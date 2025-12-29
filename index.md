@@ -3,7 +3,7 @@ layout: default
 title: Home
 ---
 
-<section class="hero">
+<section class="hero" id="Landing Page">
   <div class="container">
     <div class="terminal-meta">
       <span class="meta-prompt">></span> USER: Tamizh | ROLE: Automation_Eng | STATUS: Online
@@ -21,7 +21,7 @@ title: Home
   </div>
 </section>
 
-<section class="trait"> 
+<section class="trait" id="Possibilities"> 
   <div class="container">
     <h1>I can</h1>
     <div class="list-wrapper">
@@ -37,7 +37,7 @@ title: Home
   </div>
 </section>
 
-<section class="work">
+<section class="work" id="Career Map">
   <div class="container reveal">
     <h1 class="section-title" style="color: white;">Career Roadmap</h1>
     <div class="timeline">
@@ -59,7 +59,7 @@ title: Home
   </div>
 </section>
 
-<section class="skills">
+<section class="skills" id="Skills">
   <div class="container reveal"> 
     <h1 class="section-title">Technical Toolbox</h1>
     <div class="skills-grid">

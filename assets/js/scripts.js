@@ -1,5 +1,26 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // Active Section Observer
+  const sections = document.querySelectorAll("section, .hero");
+const paletteText = document.getElementById("palette-text");
 
+const observerOptions = {
+  threshold: 0.6 // Change text when 60% of section is visible
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      // Find the matching path from our navigation logic
+      const id = entry.target.getAttribute("id");
+      if (id) {
+        paletteText.textContent = `Location: /${id}`;
+      }
+    }
+  });
+}, observerOptions);
+
+sections.forEach((section) => observer.observe(section));
+  
   // Typing metadata
   const text = " Tamizh";
   const speed = 150; // Milliseconds per character
@@ -14,8 +35,14 @@ document.addEventListener("DOMContentLoaded", () => {
       i++;
       setTimeout(type, speed);
     } else {
-      // Once typing is done, show the subtitle and buttons
-      delayedElements.forEach(el => el.classList.add("visible"));
+      requestAnimationFrame(() => {
+        delayedElements.forEach((el, index) => {
+          // Stagger the buttons/subtitle slightly
+          setTimeout(() => {
+            el.classList.add("visible");
+          }, index * 200); 
+        });
+      });
     }
   }
 
@@ -102,5 +129,74 @@ const dateElement = document.getElementById('current-date');
     const options = { year: 'numeric', month: 'short', day: 'numeric' };
     dateElement.textContent = today.toLocaleDateString('en-IN', options).toUpperCase();
   }
+});
 
+// Contacts
+function initiateConnection(type, url) {
+  const consoleBox = document.getElementById('status-console');
+  const output = document.getElementById('console-output');
+  
+  consoleBox.classList.add('active');
+  output.innerHTML = ""; 
+
+  const lines = [
+    `> INITIATING ${type.toUpperCase()} CONNECTION...`,
+    `> RESOLVING REMOTE HOST...`,
+    `> PINGing ${type}.tamizh.io`,
+    `> Reply from 127.0.0.1: time=12ms`,
+    `> Reply from 127.0.0.1: time=10ms`,
+    `> Handshake successful.`,
+    `> Launching secure tunnel...`
+  ];
+
+  let lineIndex = 0;
+  const printLine = () => {
+    if (lineIndex < lines.length) {
+      const p = document.createElement('p');
+      p.textContent = lines[lineIndex];
+      p.style.margin = "2px 0";
+      output.appendChild(p);
+      
+      // Auto-scroll to bottom for mobile
+      output.scrollTop = output.scrollHeight;
+      
+      lineIndex++;
+      setTimeout(printLine, 150); 
+    } else {
+      setTimeout(() => {
+        window.open(url, '_blank');
+        // Optional: Keep console open for a bit or close it
+        // consoleBox.classList.remove('active');
+      }, 600);
+    }
+  };
+
+  printLine();
+}
+
+function togglePalette() {
+  document.getElementById('palette-menu').classList.toggle('open');
+}
+
+// Close palette when clicking outside
+document.addEventListener('click', (e) => {
+  const nav = document.querySelector('.command-palette-nav');
+  if (!nav.contains(e.target)) {
+    document.getElementById('palette-menu').classList.remove('open');
+  }
+});
+
+// Shortcut key (Ctrl + K or Cmd + K)
+document.addEventListener('keydown', (e) => {
+  if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+    e.preventDefault();
+    togglePalette();
+  }
+});
+
+// Close palette when a link is clicked
+document.querySelectorAll('.palette-dropdown a').forEach(link => {
+  link.addEventListener('click', () => {
+    document.getElementById('palette-menu').classList.remove('open');
+  });
 });

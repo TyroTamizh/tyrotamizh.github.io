@@ -1,13 +1,16 @@
 ---
-layout: default
+layout: professional
 title: "E2E Selenium Framework"
 role: "Lead Automation Engineer"
+client: "Fortune 500 FinTech"       # New: useful for context
 tools: [Selenium, Java, Jenkins]
+duration: "6 Months"               # New: adds professional scale
+impact: "40% faster regression"    # New: highlights results immediately
 ---
 
-### Project Overview
-I built a robust Page Object Model framework that reduced regression testing time by **40%**.
+### System Architecture
+Describe the high-level logic here.
 
-#### Key Contributions:
-* Integrated Allure reporting.
-* Set up parallel execution on BrowserStack.
+#### Core Deliverables:
+* **Feature 1:** Parallel execution engine.
+* **Feature 2:** Custom Allure listeners for real-time reporting.

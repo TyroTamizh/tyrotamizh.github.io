@@ -1,0 +1,139 @@
+.project-view {
+  max-width: 800px;
+  margin: 100px auto;
+  padding: 0 20px;
+  font-family: $code-font;
+
+  // Shared Elements
+  .breadcrumb { 
+    font-size: 0.8rem; 
+    opacity: 0.5; 
+    margin-bottom: 10px; 
+    letter-spacing: 1px;
+  }
+
+  h1 { 
+    margin-top: 5px;
+    font-size: 2.2rem;
+    color: $lightTextColor;
+  }
+
+  // 1. PROFESSIONAL VIEW SPECIFICS
+  &.professional-view {
+    border-left: 2px solid rgba($accent1, 0.2); // Corporate vertical line
+    padding-left: 40px;
+
+    h1 { border-bottom: 1px solid rgba($accent1, 0.1); padding-bottom: 15px; }
+
+    .project-meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin: 20px 0;
+      padding: 15px;
+      background: rgba($accent1, 0.03);
+
+      .meta-item {
+        font-size: 0.85rem;
+        .label { color: $accent1; font-weight: bold; margin-right: 8px; }
+      }
+    }
+    
+    .status-deployed {
+      color: #2ecc71;
+      font-weight: bold;
+      &::before { content: "[ "; }
+      &::after { content: " ]"; }
+    }
+  }
+
+  // 2. ACADEMIC / LAB VIEW SPECIFICS
+  &.academic-view {
+    .header-main {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      border-bottom: 2px solid $accent1;
+      padding-bottom: 10px;
+
+      .type-tag {
+        font-size: 0.7rem;
+        border: 1px solid rgba($accent1, 0.3);
+        padding: 2px 10px;
+        opacity: 0.7;
+      }
+    }
+
+    .mission-brief {
+      background: rgba($accent1, 0.05);
+      border: 1px dashed rgba($accent1, 0.3);
+      padding: 20px;
+      margin: 25px 0;
+      position: relative;
+
+      .brief-label {
+        position: absolute;
+        top: -10px;
+        left: 15px;
+        background: $darkbgColor;
+        padding: 0 10px;
+        color: $accent1;
+        font-size: 0.7rem;
+        font-weight: bold;
+      }
+      p { margin: 0; font-size: 0.95rem; line-height: 1.5; color: #ccc; }
+    }
+
+    .specs-bar {
+      display: flex;
+      gap: 30px;
+      margin-bottom: 30px;
+      font-size: 0.8rem;
+      .s-label { color: rgba($accent1, 0.5); }
+      .s-value { color: $lightTextColor; }
+      .success { color: #2ecc71; font-weight: bold; }
+    }
+  }
+
+  // 3. PROJECT CONTENT (The Markdown body)
+  .project-content {
+    margin-top: 40px;
+    
+    h3 { color: $accent1; margin-top: 30px; font-size: 1.2rem; }
+    
+    ul {
+      list-style: none;
+      padding-left: 0;
+      li {
+        margin-bottom: 10px;
+        &::before { content: "> "; color: $accent1; font-weight: bold; }
+      }
+    }
+
+    p { margin-bottom: 20px; color: $darkTextColor; }
+  }
+
+  // 4. RETURN BUTTON
+  .project-navigation {
+    margin-top: 60px;
+    padding-top: 20px;
+    border-top: 1px solid rgba($accent1, 0.1);
+    
+    .back-link {
+      color: $accent1;
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: bold;
+      &:hover { text-decoration: underline; }
+    }
+  }
+}
+
+// Mobile Tweak
+@media (max-width: 768px) {
+  .project-view {
+    &.professional-view { padding-left: 20px; }
+    .academic-view .header-main { flex-direction: column; gap: 10px; }
+    .specs-bar { flex-direction: column; gap: 10px; }
+  }
+}

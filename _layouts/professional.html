@@ -1,0 +1,22 @@
+---
+layout: default
+---
+<article class="project-view professional-view">
+  <header class="project-header">
+    <div class="breadcrumb">root / professional / {{ page.title | slugify }}</div>
+    <h1>{{ page.title }}</h1>
+    <div class="project-meta-grid">
+      <div class="meta-item"><span class="label">ROLE:</span> {{ page.role }}</div>
+      <div class="meta-item"><span class="label">STACK:</span> {{ page.tools | join: ", " }}</div>
+      <div class="meta-item"><span class="label">STATUS:</span> <span class="status-deployed">PROD_READY</span></div>
+    </div>
+  </header>
+
+  <section class="project-content">
+    {{ content }}
+  </section>
+
+  <footer class="project-navigation">
+    <a href="/projects" class="back-link">-- RETURN TO DIRECTORY --</a>
+  </footer>
+</article>

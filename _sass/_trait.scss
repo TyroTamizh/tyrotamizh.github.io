@@ -1,0 +1,76 @@
+.trait {
+  background: $lightbgColor;
+  color: $darkTextColor;
+  font-family: $code-font;
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 6em;
+  }
+  h1 {
+    font-size: 3.25rem;
+    flex: 1;
+  }
+  .list-wrapper {
+    height: 15.2em;
+    overflow: hidden;
+  }
+  ul {
+    list-style: none;
+    padding: 4.75em 0 0 0;
+    transition: transform 0.5s ease;
+  }
+  li {
+    font-family: $code-font;
+    font-size: 2.5em;
+    font-weight: bold;
+    transform: scale(0.7);
+    opacity: 0.25;
+    transition: all 0.5s;
+    color: #1c3c3c;
+    &.active {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+}
+
+#ticker {
+  transition: transform 0.6s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+@media (max-width: 768px) {
+  .trait {
+    .container {
+      flex-direction: column;
+      text-align: center;
+      gap: 25px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+    }
+
+    ul {
+      padding: 35px 0 0 0;
+    }
+
+    li {
+      font-size: 20px;
+      opacity: 0.15;
+    }
+
+    .list-wrapper {
+      height: 200px;
+    }
+    &.active {
+      transform: scale(0.55);
+    }
+  }
+  
+  .btn.btn-outline {
+    margin: 10px 0 0;
+    display: block;
+  }
+}

@@ -1,0 +1,142 @@
+.terminal-window {
+  background: $darkbgColor;
+  border: 1px solid rgba($accent1, 0.3);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+  font-family: $code-font;
+}
+
+.terminal-header {
+  background: #16464d;
+  padding: 8px 15px;
+  color: $accent1;
+  font-size: 0.8rem;
+  text-align: center;
+  border-bottom: 1px solid rgba($accent1, 0.1);
+}
+
+.terminal-body {
+  padding: 20px;
+  color: $lightTextColor;
+}
+
+.directory-header {
+  display: flex;
+  color: $lightbgColor; // Dimmed color for headers
+  font-size: 0.75rem;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba($accent1, 0.1);
+  margin-bottom: 15px;
+
+  .col {
+    flex: 1;
+  }
+  .col:nth-child(4) {
+    flex: 3;
+  } // Give more space to the name
+}
+
+.project-item {
+  display: flex;
+  align-items: center;
+  padding: 8px 0;
+  font-size: 0.9rem;
+  transition: background 0.2s;
+  border-bottom: 1px solid rgba($accent1, 0.05);
+
+  &:hover {
+    background: rgba($accent1, 0.05);
+    .name a {
+      color: $accent1;
+    }
+  }
+
+  span {
+    flex: 1;
+  }
+  .name {
+    flex: 3;
+  }
+
+  .perm {
+    color: $lightbgColor;
+  }
+  .owner {
+    color: #2ecc71;
+  } // Green for active user
+  .size {
+    color: #f1c40f;
+  } // Yellow for data size
+
+  .name a {
+    color: $lightTextColor;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  .role-tag {
+    font-size: 0.75rem;
+    color: $lightbgColor;
+    margin-left: 10px;
+  }
+}
+
+// ============================
+// Terminal Status Footer
+// ============================
+.terminal-footer-status {
+  display: flex;
+  justify-content: flex-start;
+  gap: 30px;
+  background: #16464d;
+  padding: 5px 20px;
+  border-radius: 0 0 8px 8px; // Attaches to the bottom of the window
+  font-family: $code-font;
+  font-size: 0.75rem;
+  border: 1px solid rgba($accent1, 0.3);
+  border-top: none;
+
+  .status-item {
+    display: flex;
+    gap: 8px;
+  }
+
+  .status-label {
+    color: rgba($accent1, 0.6);
+  }
+
+  .status-value {
+    color: $accent1;
+
+    &.green {
+      color: #2ecc71;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .perm,
+  .owner,
+  .size {
+    display: none;
+  }
+
+  .directory-header {
+    display: none;
+  }
+  
+  .project-item {
+    padding: 12px 5px;
+    .name {
+      font-size: 0.85rem;
+      display: flex;
+      flex-direction: column; // Stack title and role on mobile
+      gap: 4px;
+    }
+    .role-tag {
+      margin-left: 0;
+      opacity: 0.7;
+    }
+  }
+}

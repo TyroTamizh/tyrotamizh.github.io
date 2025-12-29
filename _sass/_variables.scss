@@ -1,0 +1,41 @@
+//Variables
+$max-width: 1000px;
+$darkbgColor: #0b2e33;
+$lightbgColor: #4f7c82;
+$darkTextColor: #93b1b5;
+$lightTextColor: #b8e3e9;
+$accent1: #b8e3e9;
+$accent2: #0b2e33;
+$code-font: "Courier New", Courier, monospace;
+
+// Base body
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0;
+  font-family: $code-font;
+  line-height: 1.6;
+  color: $lightTextColor;
+  background-color: $darkbgColor;
+  padding-bottom: 40px;
+}
+
+.container {
+  max-width: $max-width;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.pill,
+.reveal,
+.timeline-item,
+#ticker,
+.skill-category {
+  backface-visibility: hidden;
+  perspective: 1000px;
+  will-change: transform, opacity; // Tells the browser to optimize these
+}

@@ -11,3 +11,6 @@ collections:
   academic_projects:
     output: true
     permalink: /academic/:path/
+
+sass:
+  sass_dir: _sass

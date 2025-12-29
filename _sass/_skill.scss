@@ -1,0 +1,143 @@
+.skills {
+  background-color: $lightbgColor;
+  background-image: linear-gradient(rgba($accent2, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba($accent2, 0.07) 1px, transparent 1px);
+  background-size: 40px 40px;
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      circle at center,
+      transparent,
+      $lightbgColor 90%
+    );
+    pointer-events: none;
+  }
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 50px;
+  color: $lightTextColor;
+  font-family: $code-font;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.skill-category {
+  background: $darkbgColor;
+  border-radius: 8px;
+  border: 1px solid rgba($accent1, 0.3);
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  &:hover {
+    transform: translateY(-5px);
+    border-color: $accent1;
+  }
+
+  h3 {
+    background: #16464d;
+    margin: 0;
+    padding: 12px;
+    font-family: "Courier New", monospace;
+    font-size: 0.9rem;
+    color: $accent1;
+    &::before {
+      content: "● ● ●";
+      color: rgba($accent1, 0.5);
+      font-size: 0.6rem;
+      margin-right: 15px;
+    }
+  }
+
+  ul {
+    list-style: none;
+    padding: 20px;
+    margin: 0;
+  }
+
+  // Tag Style (for categories without progress bars)
+  li:not(.skill-row) {
+    display: inline-block;
+    background: rgba($accent1, 0.1);
+    border: 1px solid rgba($accent1, 0.2);
+    color: $lightTextColor;
+    padding: 4px 10px;
+    margin: 4px;
+    border-radius: 4px;
+    font-family: "Courier New", monospace;
+    font-size: 0.85rem;
+    &::before {
+      content: "> ";
+      color: $accent1;
+    }
+  }
+}
+
+// Skill Rows with Bars
+.skill-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  width: 100%;
+  .skill-name {
+    font-family: "Courier New", monospace;
+    font-size: 0.85rem;
+    min-width: 110px;
+    flex-shrink: 0;
+    &::before {
+      content: "> ";
+      color: $accent1;
+    }
+  }
+  .skill-bar-container {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+  }
+  .skill-progress-bg {
+    flex-grow: 1;
+    height: 8px;
+    background: rgba($accent1, 0.05);
+    border: 1px solid rgba($accent1, 0.2);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .skill-progress-fill {
+    height: 100%;
+    background: $accent1;
+    background-image: linear-gradient(
+      90deg,
+      rgba($darkbgColor, 0.3) 1px,
+      transparent 1px
+    );
+    background-size: 4px 100%;
+    transition: width 1.5s ease-in-out;
+  }
+}
+
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 1.4rem; // Scaled down from the desktop size
+    word-break: break-all; // Allows the long path to wrap if it hits the edge
+    padding: 0 10px;
+    margin-bottom: 30px;
+
+    &::after {
+      width: 30px; // Shorter line for mobile
+      margin: 10px auto;
+    }
+  }
+  .container {
+    padding: 0 15px;
+    overflow-x: hidden;
+  }
+}

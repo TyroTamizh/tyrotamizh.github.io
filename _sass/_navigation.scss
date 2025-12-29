@@ -1,0 +1,142 @@
+.command-palette-nav {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  width: 90%;
+  max-width: 500px;
+  font-family: $code-font;
+
+  .palette-bar {
+    background: rgba(11, 46, 51, 0.9); // $darkbgColor with transparency
+    border: 1px solid rgba($accent1, 0.3);
+    padding: 5px 15px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+
+    &:hover {
+      border-color: $accent1;
+      box-shadow: 0 0 15px rgba($accent1, 0.2);
+    }
+
+    .prompt {
+      color: $accent1;
+      margin-right: 15px;
+      font-weight: bold;
+    }
+    .placeholder {
+      color: $lightbgColor;
+      font-size: 0.9rem;
+      flex-grow: 1;
+    }
+    .kbd {
+      background: #16464d;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.7rem;
+      color: $accent1;
+      opacity: 0.7;
+    }
+  }
+  .home-trigger {
+    color: $accent1;
+    padding: 8px;
+    margin-right: 10px;
+    border-right: 1px solid rgba($accent1, 0.2);
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: scale(1.1);
+      color: $lightTextColor;
+    }
+  }
+
+  .palette-input-area {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    cursor: pointer;
+    padding: 5px 0;
+
+    .prompt {
+      color: $accent1;
+      margin-right: 12px;
+    }
+    .placeholder {
+      color: $lightbgColor;
+      font-size: 0.85rem;
+    }
+  }
+
+  .palette-dropdown {
+    list-style: none;
+    background: rgba(11, 46, 51, 0.95);
+    margin-top: 10px;
+    border-radius: 8px;
+    border: 1px solid rgba($accent1, 0.3);
+    padding: 10px 0;
+    display: none; // Hidden by default
+    overflow: hidden;
+
+    &.open {
+      display: block;
+      animation: slideDown 0.2s ease-out;
+    }
+
+    li a {
+      display: block;
+      padding: 10px 20px;
+      color: $lightTextColor;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: background 0.2s;
+
+      &:hover {
+        background: rgba($accent1, 0.1);
+        color: $accent1;
+      }
+
+      .cmd {
+        color: $accent1;
+        opacity: 0.6;
+        margin-right: 10px;
+      }
+    }
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .kbd {
+    display: none;
+  }
+  .command-palette-nav {
+    top: 10px; // Stick closer to the top on mobile
+    width: 95%;
+  }
+  .home-trigger {
+    border-right: none; // Cleaner look on mobile
+    margin-right: 5px;
+  }
+  .placeholder {
+    font-size: 0.75rem; // Fit more text
+  }
+}

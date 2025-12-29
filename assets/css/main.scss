@@ -28,13 +28,18 @@ body {
   line-height: 1.6;
   color: $lightTextColor;
   background-color: $darkbgColor;
+  padding-bottom: 40px;
 }
 .container {
   max-width: $max-width;
   margin: 0 auto;
   padding: 0 20px;
 }
-.pill, .reveal, .timeline-item, #ticker, .skill-category {
+.pill,
+.reveal,
+.timeline-item,
+#ticker,
+.skill-category {
   backface-visibility: hidden;
   perspective: 1000px;
   will-change: transform, opacity; // Tells the browser to optimize these
@@ -57,8 +62,7 @@ section,
 .reveal {
   opacity: 0;
   transform: translateY(20px) scale(0.98); // Start slightly smaller
-  transition: 
-    opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), 
+  transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1),
     transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
   visibility: hidden;
 
@@ -93,15 +97,26 @@ section,
     backdrop-filter: blur(10px);
     transition: all 0.3s ease;
 
-    &:hover { border-color: $accent1; box-shadow: 0 0 15px rgba($accent1, 0.2); }
+    &:hover {
+      border-color: $accent1;
+      box-shadow: 0 0 15px rgba($accent1, 0.2);
+    }
 
-    .prompt { color: $accent1; margin-right: 15px; font-weight: bold; }
-    .placeholder { color: $lightbgColor; font-size: 0.9rem; flex-grow: 1; }
-    .kbd { 
-      background: #16464d; 
-      padding: 2px 6px; 
-      border-radius: 4px; 
-      font-size: 0.7rem; 
+    .prompt {
+      color: $accent1;
+      margin-right: 15px;
+      font-weight: bold;
+    }
+    .placeholder {
+      color: $lightbgColor;
+      font-size: 0.9rem;
+      flex-grow: 1;
+    }
+    .kbd {
+      background: #16464d;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.7rem;
       color: $accent1;
       opacity: 0.7;
     }
@@ -129,8 +144,14 @@ section,
     cursor: pointer;
     padding: 5px 0;
 
-    .prompt { color: $accent1; margin-right: 12px; }
-    .placeholder { color: $lightbgColor; font-size: 0.85rem; }
+    .prompt {
+      color: $accent1;
+      margin-right: 12px;
+    }
+    .placeholder {
+      color: $lightbgColor;
+      font-size: 0.85rem;
+    }
   }
 
   .palette-dropdown {
@@ -143,7 +164,10 @@ section,
     display: none; // Hidden by default
     overflow: hidden;
 
-    &.open { display: block; animation: slideDown 0.2s ease-out; }
+    &.open {
+      display: block;
+      animation: slideDown 0.2s ease-out;
+    }
 
     li a {
       display: block;
@@ -153,19 +177,29 @@ section,
       font-size: 0.9rem;
       transition: background 0.2s;
 
-      &:hover { 
-        background: rgba($accent1, 0.1); 
+      &:hover {
+        background: rgba($accent1, 0.1);
         color: $accent1;
       }
-      
-      .cmd { color: $accent1; opacity: 0.6; margin-right: 10px; }
+
+      .cmd {
+        color: $accent1;
+        opacity: 0.6;
+        margin-right: 10px;
+      }
     }
   }
 }
 
 @keyframes slideDown {
-  from { opacity: 0; transform: translateY(-10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 // ============================
@@ -329,10 +363,7 @@ section,
   opacity: 0;
   transform: translateY(10px);
   filter: blur(5px);
-  transition: 
-    opacity 1s ease, 
-    transform 1s ease, 
-    filter 0.8s ease;
+  transition: opacity 1s ease, transform 1s ease, filter 0.8s ease;
 
   &.visible {
     opacity: 0.9;
@@ -399,7 +430,7 @@ section,
   }
 }
 
-#ticker{
+#ticker {
   transition: transform 0.6s cubic-bezier(0.65, 0, 0.35, 1);
 }
 
@@ -702,11 +733,74 @@ section,
 // ============================
 // 9. Footer & Mobile
 // ============================
-footer {
-  background: $darkbgColor;
-  padding: 40px 0;
-  text-align: center;
-  font-size: 0.9rem;
+.system-footer {
+  background: rgba(8, 30, 34, 0.95);
+  border-top: 1px solid rgba($accent1, 0.2);
+  padding: 6px 20px;
+  font-family: $code-font;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  .footer-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 100%; // Spans full width like a status bar
+    margin: 0 auto;
+  }
+
+  .footer-left,
+  .footer-right {
+    display: flex;
+    gap: 20px;
+    flex: 1;
+  }
+
+  .footer-right {
+    justify-content: flex-end;
+  }
+
+  .footer-center {
+    flex: 2;
+    text-align: center;
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+    opacity: 0.8;
+    p {
+      margin: 0;
+    }
+    .engine {
+      color: rgba($accent1, 0.5);
+    }
+  }
+
+  .footer-segment {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.7rem;
+
+    .status-label {
+      color: rgba($accent1, 0.4);
+    }
+    .status-value {
+      color: $accent1;
+    }
+  }
+
+  // Active status dot in footer
+  .status-dot {
+    height: 6px;
+    width: 6px;
+    background: #2ecc71;
+    border-radius: 50%;
+    box-shadow: 0 0 5px #2ecc71;
+  }
 }
 
 // Contact Pages
@@ -732,7 +826,7 @@ footer {
     transition: all 0.3s;
     border-radius: 4px;
     flex: 0 1 auto;
-    
+
     &:hover {
       background: rgba($accent1, 0.1);
       box-shadow: 0 0 15px rgba($accent1, 0.3);
@@ -753,7 +847,7 @@ footer {
     opacity: 0;
     transform: translateY(20px);
     transition: all 0.5s;
-    
+
     &.active {
       opacity: 1;
       transform: translateY(0);
@@ -767,12 +861,27 @@ footer {
     align-items: center;
     gap: 8px;
     border-bottom: 1px solid #333;
-    .dot { width: 8px; height: 8px; border-radius: 50%; }
-    .red { background: #ff5f56; }
-    .yellow { background: #ffbd2e; }
-    .green { background: #27c93f; }
-    .console-title { font-size: 0.7rem; margin-left: 10px; color: #888;text-transform: uppercase;
-      letter-spacing: 1px; }
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+    .red {
+      background: #ff5f56;
+    }
+    .yellow {
+      background: #ffbd2e;
+    }
+    .green {
+      background: #27c93f;
+    }
+    .console-title {
+      font-size: 0.7rem;
+      margin-left: 10px;
+      color: #888;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
   }
 
   .console-output {
@@ -833,9 +942,17 @@ footer {
 
     .card-body {
       margin-top: 10px;
-      
-      .label { color: $accent1; font-weight: bold; margin-right: 5px; }
-      .description { font-size: 0.9rem; line-height: 1.6; color: #ccc; }
+
+      .label {
+        color: $accent1;
+        font-weight: bold;
+        margin-right: 5px;
+      }
+      .description {
+        font-size: 0.9rem;
+        line-height: 1.6;
+        color: #ccc;
+      }
     }
   }
 
@@ -844,10 +961,24 @@ footer {
     margin-bottom: 20px;
     border-bottom: 1px dashed rgba($accent1, 0.1);
     padding-bottom: 10px;
-    &:last-child { border: none; }
-    .edu-title { color: $lightTextColor; font-weight: bold; margin: 0; }
-    .edu-meta { font-size: 0.8rem; color: #888; margin: 5px 0; }
-    .edu-date { font-family: $code-font; font-size: 0.75rem; color: $accent1; }
+    &:last-child {
+      border: none;
+    }
+    .edu-title {
+      color: $lightTextColor;
+      font-weight: bold;
+      margin: 0;
+    }
+    .edu-meta {
+      font-size: 0.8rem;
+      color: #888;
+      margin: 5px 0;
+    }
+    .edu-date {
+      font-family: $code-font;
+      font-size: 0.75rem;
+      color: $accent1;
+    }
   }
 
   // Tags
@@ -864,11 +995,14 @@ footer {
     }
   }
 }
+
 // ============================
 // 12. Mobile
 // ============================
 @media (max-width: 768px) {
-.kbd { display: none; }
+  .kbd {
+    display: none;
+  }
 
   .hero h1 {
     font-size: 2.2rem; // Slightly smaller to prevent excessive wrapping
@@ -950,7 +1084,7 @@ footer {
     gap: 5px;
     padding: 10px 15px;
   }
-.contact-terminal-section {
+  .contact-terminal-section {
     padding: 40px 15px;
     width: 100%;
     overflow: hidden; // Critical: clips any accidental overflow
@@ -958,7 +1092,7 @@ footer {
 
     .contact-pills {
       flex-direction: column; // Stack vertically to save horizontal space
-      align-items: stretch; 
+      align-items: stretch;
       gap: 12px;
       width: 100%; // Ensure it stays within viewport
       margin: 0 auto 25px;
@@ -966,24 +1100,24 @@ footer {
 
     .pill {
       width: 100%; // Buttons take full width of their container
-      max-width: 100%; 
+      max-width: 100%;
       text-align: center;
       box-sizing: border-box;
     }
 
     .status-console {
       width: 100%; // Responsive width
-      max-width: 100%; 
+      max-width: 100%;
       margin: 0;
       display: none; // Hidden from the flow until clicked
-      
+
       &.active {
         display: block; // Injected into layout only when active
       }
     }
 
     .console-output {
-      font-size: 0.75rem; 
+      font-size: 0.75rem;
       padding: 12px;
       word-break: break-all; // Safety for long ping lines
       overflow-wrap: break-word;
@@ -1004,12 +1138,12 @@ footer {
     font-size: 0.75rem; // Fit more text
   }
 
-   .system-spec-container {
+  .system-spec-container {
     margin: 60px auto; // Reduce top margin on mobile
     padding: 0 15px;
-    
+
     .spec-grid {
-      display: grid; 
+      display: grid;
       grid-template-columns: 1fr !important; // Forces 1 column
       width: 100%;
     }
@@ -1017,10 +1151,35 @@ footer {
     .spec-card {
       margin-bottom: 10px; // Add spacing between stacked cards
     }
-    
+
     .spec-header {
       margin-bottom: 30px;
-      h1 { font-size: 1.5rem; } // Scale down header text
+      h1 {
+        font-size: 1.5rem;
+      } // Scale down header text
     }
+  }
+
+  .system-footer {
+    padding: 10px 15px;
+
+    .footer-bar {
+      flex-direction: row;
+      gap: 10px;
+      padding: 15px 0;
+      justify-content: space-between;
+    }
+    .footer-left,
+    .footer-right {
+      justify-content: center;
+      width: 100%;
+      text-align: center;
+    }
+    .footer-center {
+      display: none;
+    }
+  }
+  .hidden-mobile {
+    display: none;
   }
 }

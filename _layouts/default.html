@@ -41,11 +41,35 @@
     {{ content }}
   </main>
 
-  <footer>
-    <div class="container">
-      <p>&copy; {{ "now" | date: "%Y" }} {{ site.title }}. Built with Jekyll.</p>
+<footer class="system-footer">
+  <div class="footer-bar">
+    <div class="footer-left">
+      <div class="footer-segment">
+        <span class="status-label">SYS_UPTIME:</span>
+        <span class="status-value">4.2_YRS</span>
+      </div>
+      <div class="footer-segment hidden-mobile">
+        <span class="status-label">LOC:</span>
+        <span class="status-value">CHN_IN</span>
+      </div>
     </div>
-  </footer>
+
+    <div class="footer-center">
+      <p>&copy; {{ "now" | date: "%Y" }} {{ site.title }} // <span class="engine">JEKYLL_v{{ jekyll.version }}</span></p>
+    </div>
+
+    <div class="footer-right">
+      <div class="footer-segment">
+        <span class="status-label">TIME:</span>
+        <span id="live-clock" class="status-value">00:00:00</span>
+      </div>
+      <div class="footer-segment">
+        <span class="status-dot"></span>
+        <span class="status-value">LIVE</span>
+      </div>
+    </div>
+  </div>
+</footer>
 
   <script src="{{ '/assets/js/scripts.js' | relative_url }}"></script>
 </body>

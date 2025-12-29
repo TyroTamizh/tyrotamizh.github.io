@@ -129,6 +129,23 @@ const dateElement = document.getElementById('current-date');
     const options = { year: 'numeric', month: 'short', day: 'numeric' };
     dateElement.textContent = today.toLocaleDateString('en-IN', options).toUpperCase();
   }
+
+function updateClock() {
+  const clockElement = document.getElementById('live-clock');
+  if (clockElement) {
+    const now = new Date();
+    const timeString = now.toLocaleTimeString('en-IN', { 
+      hour12: false, 
+      hour: '2-digit', 
+      minute: '2-digit', 
+      second: '2-digit' 
+    });
+    clockElement.textContent = timeString;
+  }
+}
+setInterval(updateClock, 1000);
+updateClock(); // Initial call
+
 });
 
 // Contacts

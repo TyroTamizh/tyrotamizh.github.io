@@ -786,6 +786,84 @@ footer {
   }
 }
 
+// About section
+.system-spec-container {
+  max-width: 1000px;
+  margin: 100px auto;
+  padding: 0 20px;
+  display: block;
+
+  .spec-header {
+    margin-bottom: 50px;
+    border-left: 4px solid $accent1;
+    padding-left: 20px;
+  }
+
+  .spec-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); // 2 columns on desktop
+    gap: 25px;
+    width: 100%;
+  }
+
+  .spec-card {
+    background: rgba($darkbgColor, 0.5);
+    border: 1px solid rgba($accent1, 0.2);
+    position: relative;
+    padding: 20px;
+    transition: all 0.3s ease;
+
+    &:hover {
+      border-color: $accent1;
+      background: rgba($accent1, 0.05);
+      transform: translateY(-5px);
+    }
+
+    .card-header {
+      position: absolute;
+      top: -10px;
+      left: 15px;
+      background: $darkbgColor;
+      padding: 0 10px;
+      font-family: $code-font;
+      font-size: 0.75rem;
+      color: $accent1;
+      letter-spacing: 1px;
+    }
+
+    .card-body {
+      margin-top: 10px;
+      
+      .label { color: $accent1; font-weight: bold; margin-right: 5px; }
+      .description { font-size: 0.9rem; line-height: 1.6; color: #ccc; }
+    }
+  }
+
+  // Education Item styling
+  .edu-item {
+    margin-bottom: 20px;
+    border-bottom: 1px dashed rgba($accent1, 0.1);
+    padding-bottom: 10px;
+    &:last-child { border: none; }
+    .edu-title { color: $lightTextColor; font-weight: bold; margin: 0; }
+    .edu-meta { font-size: 0.8rem; color: #888; margin: 5px 0; }
+    .edu-date { font-family: $code-font; font-size: 0.75rem; color: $accent1; }
+  }
+
+  // Tags
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    .tag {
+      font-size: 0.75rem;
+      padding: 4px 10px;
+      border: 1px solid rgba($accent1, 0.4);
+      border-radius: 4px;
+      color: $accent1;
+    }
+  }
+}
 // ============================
 // 12. Mobile
 // ============================
@@ -924,5 +1002,25 @@ footer {
 
   .placeholder {
     font-size: 0.75rem; // Fit more text
+  }
+
+   .system-spec-container {
+    margin: 60px auto; // Reduce top margin on mobile
+    padding: 0 15px;
+    
+    .spec-grid {
+      display: grid; 
+      grid-template-columns: 1fr !important; // Forces 1 column
+      width: 100%;
+    }
+
+    .spec-card {
+      margin-bottom: 10px; // Add spacing between stacked cards
+    }
+    
+    .spec-header {
+      margin-bottom: 30px;
+      h1 { font-size: 1.5rem; } // Scale down header text
+    }
   }
 }

@@ -45,8 +45,8 @@ title: My Projects
           {% endfor %}
         </div>
       </div>
-      <div class="terminal-footer-status">
 
+      <div class="terminal-footer-status">
       <div class="status-item">
         <span class="status-label">TOTAL_PROJECTS:</span>
         <span class="status-value">{{ site.professional_projects.size | plus: site.academic_projects.size }}</span>
@@ -55,7 +55,7 @@ title: My Projects
         <span class="status-label">LAST_SCAN:</span>
         <span class="status-value" id="current-date"></span>
       </div>
-      <div class="status-item">
+      <div class="status-item hidden-mobile">
         <span class="status-label">BUILD_STATUS:</span>
         <span class="status-value green">SUCCESS [0 errors]</span>
       </div>

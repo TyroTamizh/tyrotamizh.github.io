@@ -1,13 +1,16 @@
+// =====================================================
+// GLOBAL SYSTEM FOOTER
+// =====================================================
 .system-footer {
-  background: rgba(8, 30, 34, 0.95);
-  border-top: 1px solid rgba($accent1, 0.2);
-  padding: 6px 20px;
-  font-family: $code-font;
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
   z-index: 1000;
+  padding: 6px 20px;
+  background: rgba(8, 30, 34, 0.95);
+  border-top: 1px solid rgba($accent1, 0.2);
+  font-family: $code-font;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
 
@@ -15,20 +18,17 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 100%; // Spans full width like a status bar
+    max-width: 100%;
     margin: 0 auto;
   }
 
-  .footer-left,
-  .footer-right {
+  .footer-left, .footer-right {
     display: flex;
     gap: 20px;
     flex: 1;
   }
 
-  .footer-right {
-    justify-content: flex-end;
-  }
+  .footer-right { justify-content: flex-end; }
 
   .footer-center {
     flex: 2;
@@ -36,12 +36,8 @@
     font-size: 0.7rem;
     letter-spacing: 1px;
     opacity: 0.8;
-    p {
-      margin: 0;
-    }
-    .engine {
-      color: rgba($accent1, 0.5);
-    }
+    p { margin: 0; }
+    .engine { color: rgba($accent1, 0.5); }
   }
 
   .footer-segment {
@@ -49,26 +45,23 @@
     align-items: center;
     gap: 6px;
     font-size: 0.7rem;
-
-    .status-label {
-      color: rgba($accent1, 0.4);
-    }
-    .status-value {
-      color: $accent1;
-    }
+    .status-label { color: rgba($accent1, 0.4); }
+    .status-value { color: $accent1; }
   }
 
-  // Active status dot in footer
   .status-dot {
     height: 6px;
     width: 6px;
     background: #2ecc71;
     border-radius: 50%;
     box-shadow: 0 0 5px #2ecc71;
+    animation: footerPulse 2s infinite;
   }
 }
 
-// Contact Pages
+// =====================================================
+// CONTACT SECTION (Terminal Style)
+// =====================================================
 .contact-terminal-section {
   padding: 60px 20px;
   width: 100%;
@@ -88,35 +81,25 @@
     padding: 12px 24px;
     font-family: $code-font;
     cursor: pointer;
-    transition: all 0.3s;
     border-radius: 4px;
-    flex: 0 1 auto;
-
+    transition: all 0.3s;
     &:hover {
       background: rgba($accent1, 0.1);
       box-shadow: 0 0 15px rgba($accent1, 0.3);
     }
-
-    i {
-      margin-right: 8px;
-    }
+    i { margin-right: 8px; }
   }
 
   .status-console {
     max-width: 600px;
-    width: 100%;
     margin: 0 auto;
     background: #000;
     border-radius: 6px;
     overflow: hidden;
-    opacity: 0;
+    opacity: 50%;
     transform: translateY(20px);
     transition: all 0.5s;
-
-    &.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    &.active { opacity: 1; transform: translateY(0); }
   }
 
   .console-header {
@@ -126,20 +109,10 @@
     align-items: center;
     gap: 8px;
     border-bottom: 1px solid #333;
-    .dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-    }
-    .red {
-      background: #ff5f56;
-    }
-    .yellow {
-      background: #ffbd2e;
-    }
-    .green {
-      background: #27c93f;
-    }
+    .dot { width: 8px; height: 8px; border-radius: 50%; }
+    .red { background: #ff5f56; }
+    .yellow { background: #ffbd2e; }
+    .green { background: #27c93f; }
     .console-title {
       font-size: 0.7rem;
       margin-left: 10px;
@@ -152,77 +125,36 @@
   .console-output {
     padding: 15px;
     font-size: 0.9rem;
-    color: #00ff00; // Classic terminal green
-    min-height: 150px;
+    color: #00ff00;
     min-height: 160px;
     line-height: 1.5;
     word-break: break-all;
   }
 }
 
+// =====================================================
+// ANIMATIONS
+// =====================================================
+@keyframes footerPulse {
+  0% { box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.7); }
+  70% { box-shadow: 0 0 0 6px rgba(46, 204, 113, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(46, 204, 113, 0); }
+}
+
+// =====================================================
+// RESPONSIVE OVERRIDES
+// =====================================================
 @media (max-width: 768px) {
-  .terminal-footer-status {
-    flex-direction: column;
-    gap: 5px;
-    padding: 10px 15px;
-  }
-  .contact-terminal-section {
-    padding: 40px 15px;
-    width: 100%;
-    overflow: hidden; // Critical: clips any accidental overflow
-    box-sizing: border-box;
-
-    .contact-pills {
-      flex-direction: column; // Stack vertically to save horizontal space
-      align-items: stretch;
-      gap: 12px;
-      width: 100%; // Ensure it stays within viewport
-      margin: 0 auto 25px;
-    }
-
-    .pill {
-      width: 100%; // Buttons take full width of their container
-      max-width: 100%;
-      text-align: center;
-      box-sizing: border-box;
-    }
-    .status-console {
-      width: 100%; // Responsive width
-      max-width: 100%;
-      margin: 0;
-      display: none; // Hidden from the flow until clicked
-
-      &.active {
-        display: block; // Injected into layout only when active
-      }
-    }
-    .console-output {
-      font-size: 0.75rem;
-      padding: 12px;
-      word-break: break-all; // Safety for long ping lines
-      overflow-wrap: break-word;
-    }
-  }
   .system-footer {
     padding: 10px 15px;
+    .footer-bar { flex-direction: row; justify-content: center; }
+    .footer-left, .footer-right { justify-content: center; width: auto; }
+  }
 
-    .footer-bar {
-      flex-direction: row;
-      gap: 10px;
-      padding: 15px 0;
-      justify-content: space-between;
-    }
-    .footer-left,
-    .footer-right {
-      justify-content: center;
-      width: 100%;
-      text-align: center;
-    }
-    .footer-center {
-      display: none;
-    }
+  .contact-terminal-section {
+    padding: 40px 15px;
+    .contact-pills { flex-direction: column; }
+    .status-console { &.active { display: block; } }
   }
-  .hidden-mobile {
-    display: none;
-  }
+  
 }

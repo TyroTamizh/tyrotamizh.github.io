@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
-<body>
+<body class="{% if page.url == '/' %}is-home{% endif %}">
 
   <nav class="command-palette-nav">
   <div class="palette-container">
@@ -43,23 +43,23 @@
 
 <footer class="system-footer">
   <div class="footer-bar">
-    <div class="footer-left">
+    <div class="footer-left hidden-mobile">
       <div class="footer-segment">
         <span class="status-label">SYS_UPTIME:</span>
         <span class="status-value">4.2_YRS</span>
       </div>
-      <div class="footer-segment hidden-mobile">
+      <div class="footer-segment">
         <span class="status-label">LOC:</span>
         <span class="status-value">CHN_IN</span>
       </div>
     </div>
 
     <div class="footer-center">
-      <p>&copy; {{ "now" | date: "%Y" }} {{ site.title }} // <span class="engine">JEKYLL_v{{ jekyll.version }}</span></p>
+      <p>&copy; {{ "now" | date: "%Y" }} Tamizh Selvan Johnson. <br><span class="engine"> Built with Jekyll </span></p>
     </div>
 
     <div class="footer-right">
-      <div class="footer-segment">
+      <div class="footer-segment hidden-mobile">
         <span class="status-label">TIME:</span>
         <span id="live-clock" class="status-value">00:00:00</span>
       </div>

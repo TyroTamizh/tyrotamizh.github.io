@@ -1,7 +1,7 @@
 ---
 layout: professional
 title: "E2E Selenium Framework"
-company: "TCS"
+company: "Wipro"
 domain: "BFSI"
 role: "Module Lead"
 duration: "2016-2018"

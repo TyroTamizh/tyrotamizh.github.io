@@ -1,59 +1,42 @@
 ---
 layout: default
 ---
-  <article class="project-dashboard">
-  <header class="dashboard-header">
-    <div class="header-left">
-      <div class="breadcrumb">PROJECT_LOG // {{ page.client | uppercase }}</div>
-      <h1>{{ page.title }}</h1>
-    </div>
-    <div class="header-right">
-      <div class="metric-box">
-        <span class="metric-label">EFFICIENCY_GAIN</span>
-        <span class="metric-value">{{ page.impact_metric }}</span>
-      </div>
-    </div>
-  </header>
+<div class="professional-layout-wrapper">
+<div class="workspace-container">
+  <div class="window-header">
+    <div class="projHeader">~projects\professional\{{page.company}}\{{page.duration}}\{{ page.title | slugify }}.sh</div>
+    <div class="projectStatus hidden-mobile">Completed</div>
+  </div>
 
-  <div class="spec-grid">
-    <div class="spec-card">
-      <div class="spec-icon">⚙</div>
-      <div class="spec-info">
-        <label>ARCHITECTURE</label>
-        <span>{{ page.architecture }}</span>
+  <div class="workspace-main">
+    <aside class="system-sidebar">
+      <div class="projGroup">
+        <div class="meta-group">
+        <label>DOMAIN</label>
+        <p>{{ page.domain }}</p>
       </div>
-    </div>
-    <div class="spec-card">
-      <div class="spec-icon">📦</div>
-      <div class="spec-info">
-        <label>TOTAL_TESTS</label>
-        <span>{{ page.test_count }}</span>
+
+      <div class="meta-group">
+        <label>ROLE</label>
+        <p>{{ page.role }}</p>
       </div>
-    </div>
-    <div class="spec-card">
-      <div class="spec-icon">🛠</div>
-      <div class="spec-info">
-        <label>STACK</label>
-        <div class="tag-cloud">
-          {% for tool in page.stack %}
-            <span class="mini-tag">{{ tool }}</span>
+      </div>
+
+      <div class="meta-group techStack">
+        <label>TECH_STACK</label>
+        <ul class="tool-list">
+          {% for tool in page.tools %}
+          <li>{{ tool }}</li>
           {% endfor %}
-        </div>
+        </ul>
       </div>
-    </div>
-  </div>
-
-  <div class="dashboard-body">
-    <aside class="body-sidebar">
-      <h4>DELIVERABLES</h4>
-      <ul>
-        <li>CI/CD Integration</li>
-        <li>Automated Reporting</li>
-        <li>Parallel Execution</li>
-      </ul>
     </aside>
-    <section class="body-main" style="scroll-snap-align: unset;">
-      {{ content }}
-    </section>
+
+    <main class="execution-log">
+      <div class="content-body">
+        {{ content }}
+      </div>
+    </main>
   </div>
-</article>
+</div>
+</div>

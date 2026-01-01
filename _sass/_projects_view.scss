@@ -1,59 +1,139 @@
-.project-dashboard {
-  max-width: 1000px;
-  margin: 80px auto;
-  padding: 0 20px;
+.professional-layout-wrapper {
+  width: 100%;
+  height: calc(100vh - 60px);
+  min-height: 85vh; // Takes up most of the screen height
+  display: flex;
+  align-items: center;      // Vertical
+  justify-content: center; // Horizontal
+  padding: 60px 0; // Gives space for your Nav and Footer
+  background-color: $darkbgColor;
+}
 
-  .dashboard-header {
+.workspace-container {
+  max-width: 950px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  height: 70vh; // Keeps it compact and centered vertically
+  border: 1px solid rgba($accent1, 0.2);
+  background: $darkbgColor;
+  font-family: $code-font;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+
+  .window-header {
+    background: rgba($accent1, 0.05);
+    padding: 10px 15px;
     display: flex;
+    border-bottom: 1px solid rgba($accent1, 0.1);
+    align-items: center;
+    justify-content: space-evenly;
+    
+    .projHeader { font-size: 0.7rem; opacity: 0.5; }
+    .projectStatus {
+      font-size: 0.7rem;
+      padding: 10px;
+      background-color: green;
+    }
+  }
+
+  .workspace-main {
+   display: flex;
+   flex-direction: column;
+  }
+
+  .system-sidebar {
+    display: flex;
+    background: rgba($accent1, 0.02);
+    padding: 40px;
+    margin: 10px;
+    align-items: center;
     justify-content: space-between;
-    align-items: flex-end;
-    border-bottom: 1px solid rgba($accent1, 0.3);
-    padding-bottom: 20px;
-    margin-bottom: 30px;
-
-    .metric-box {
-      text-align: right;
-      .metric-label { font-size: 0.7rem; color: $accent1; display: block; }
-      .metric-value { font-size: 1.8rem; font-weight: bold; color: #2ecc71; }
-    }
-  }
-
-  .spec-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
-    margin-bottom: 40px;
 
-    .spec-card {
-      background: rgba($accent1, 0.05);
-      border: 1px solid rgba($accent1, 0.1);
-      padding: 15px;
+    .projGroup{
       display: flex;
-      gap: 15px;
-      align-items: center;
-
-      label { font-size: 0.65rem; color: rgba($accent1, 0.6); display: block; }
-      span { font-size: 0.9rem; font-weight: bold; }
+      flex-direction: column;
     }
+
+    .meta-group {
+      //margin-bottom: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      word-wrap: break-word;
+      border: 1px solid rgba($lightbgColor, 0.2);
+      padding: 25px;
+      background-color: rgba($accent1, 0.02);
+      label { font-size: 0.6rem; color: $accent1; letter-spacing: 1px; }
+      p { font-size: 0.85rem; margin: 5px 0 0 0; font-weight: bold; white-space:normal;}
+    }
+    
+    .tool-list {
+  display: flex;
+  flex-wrap: wrap; // Allows tags to wrap if they hit the 240px wall
+  gap: 5px;
+  list-style: none;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+  
+  li {
+    font-size: 0.75rem;
+    padding: 2px 6px;
+    background: rgba($lightbgColor, 0.5);
+    border: 1px solid rgba($accent1, 0.1);
+  }
+}
   }
 
-  .dashboard-body {
-    display: grid;
-    grid-template-columns: 250px 1fr;
-    gap: 40px;
-
-    .body-sidebar {
-      border-right: 1px solid rgba($accent1, 0.1);
-      h4 { font-size: 0.8rem; letter-spacing: 2px; color: $accent1; }
-      ul { list-style: none; padding: 0; font-size: 0.85rem; 
-        li::before { content: "→ "; color: $accent1; }
+  .execution-log {
+    padding: 25px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+       
+    .content-body {
+      font-size: 0.9rem;
+      line-height: 1.5;
+      flex: 1;
+      // Style Markdown bullets as terminal steps
+      ul li { 
+        list-style: none;
+        margin-bottom: 10px;
+        &::before { content: ">> "; color: $accent1; } 
       }
     }
   }
 }
 
 @media (max-width: 768px) {
-  .spec-grid, .dashboard-body { grid-template-columns: 1fr; }
-  .dashboard-header { flex-direction: column; align-items: flex-start; gap: 20px; }
-  .body-sidebar { border-right: none; border-bottom: 1px solid rgba($accent1, 0.1); padding-bottom: 20px; }
+  .professional-layout-wrapper{
+    padding: 0px !important;
+    margin-top: 5px;
+  }
+  .projHeader{
+    font-size: 30px;
+  }
+
+  .system-sidebar{
+    padding: 5px !important;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 5px !important;
+  }
+  .projGroup{
+    flex-direction: row !important;
+    justify-content: space-evenly;
+  }
+  .meta-group{
+    border: none !important;
+    // padding: 10px !important;
+    background-color: transparent !important;
+    // height: 10px;
+  }
+  .execution-log{
+    margin: 0 20px;
+    padding: 0px !important;
+  }
 }

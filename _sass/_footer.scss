@@ -1,4 +1,4 @@
-// =====================================================
+ // =====================================================
 // GLOBAL SYSTEM FOOTER
 // =====================================================
 .system-footer {
@@ -130,6 +130,10 @@
     line-height: 1.5;
     word-break: break-all;
   }
+
+  .mobile-message{
+    display: none;
+  }
 }
 
 // =====================================================
@@ -156,5 +160,4 @@
     .contact-pills { flex-direction: column; }
     .status-console { &.active { display: block; } }
   }
-  
 }

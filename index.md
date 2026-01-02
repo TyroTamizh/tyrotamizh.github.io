@@ -4,7 +4,7 @@ title: Home
 ---
 
 <section class="hero" id="Landing Page">
-  <div class="container">
+  <div class="container hero-container">
     <div class="terminal-meta">
       <span class="meta-prompt">></span> USER: Tamizh | ROLE: Automation_Eng | STATUS: Online
     </div>

@@ -3,7 +3,7 @@ layout: default
 title: Contact
 ---
 
-<section class="contact-terminal-section" id="Connect">
+<section class="contact-terminal-section" id="Connect" style="scroll-snap-align: unset;">
   <div class="container">
     <h1 class="section-title">Establish Link</h1>
     
@@ -19,7 +19,7 @@ title: Contact
       </button>
     </div>
 
-    <div id="status-console" class="status-console">
+    <div id="status-console" class="status-console hidden-mobile">
       <div class="console-header">
         <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
         <span class="console-title">Connection_Log.exe</span>

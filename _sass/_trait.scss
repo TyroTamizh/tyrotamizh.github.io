@@ -11,7 +11,7 @@
   position: relative;
   border-top: 2px solid rgba($lightTextColor, 0.1);
   border-bottom: 2px solid rgba($lightTextColor, 0.1);
-  overflow: hidden;
+  
   box-shadow: inset 0 0 50px rgba(0,0,0,0.2);
   &::after {
     content: "";

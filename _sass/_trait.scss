@@ -1,7 +1,30 @@
 .trait {
-  background: $lightbgColor;
+  background: linear-gradient(
+    to bottom,
+    darken($lightbgColor, 10%) 0%,
+    $lightbgColor 20%,
+    $lightbgColor 80%,
+    darken($lightbgColor, 10%) 100%
+  );
   color: $darkTextColor;
   font-family: $code-font;
+  position: relative;
+  border-top: 2px solid rgba($lightTextColor, 0.1);
+  border-bottom: 2px solid rgba($lightTextColor, 0.1);
+  overflow: hidden;
+  box-shadow: inset 0 0 50px rgba(0,0,0,0.2);
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.05) 0%,
+      transparent 50%,
+      rgba(0, 0, 0, 0.05) 100%
+    );
+    pointer-events: none;
+  }
   .container {
     display: flex;
     justify-content: space-between;
@@ -9,10 +32,15 @@
     gap: 6em;
   }
   h1 {
+    color: $darkbgColor; // Dark text on light background for contrast
+    font-family: $code-font;
     font-size: 3.25rem;
+    position: relative;
+    z-index: 2;
     flex: 1;
   }
   .list-wrapper {
+    position: relative;
     height: 15.2em;
     overflow: hidden;
   }
@@ -28,12 +56,17 @@
     transform: scale(0.7);
     opacity: 0.25;
     transition: all 0.5s;
-    color: #1c3c3c;
+    color: rgba($darkbgColor, 0.4);
     &.active {
-      transform: scale(1);
-      opacity: 1;
+      color: $darkbgColor; // Brightest color for active
+        transform: translateX(20px);
+        opacity: 1;
+        text-shadow: 2px 2px 0px $lightbgColor;
     }
   }
+}
+@keyframes blink {
+  50% { opacity: 0; }
 }
 
 #ticker {

@@ -26,7 +26,7 @@
     transition: all 0.3s ease;
 
     &:hover {
-      border-color: $accent1;
+      border-color: $accent1-glow;
       background: rgba($accent1, 0.05);
       transform: translateY(-5px);
     }
@@ -95,6 +95,11 @@
       border: 1px solid rgba($accent1, 0.4);
       border-radius: 4px;
       color: $accent1;
+    }
+    .tag:hover{
+      background-color: $accent2;
+      color: $darkbgColor;
+      font-weight: bold;
     }
   }
 }

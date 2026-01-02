@@ -1,11 +1,13 @@
 .work {
   font-family: $code-font;
 }
+
 .timeline {
   display: flex;
   justify-content: space-between;
   position: relative;
   margin-top: 50px;
+
   &::before {
     content: "";
     position: absolute;
@@ -15,11 +17,154 @@
     background: $lightbgColor;
   }
 }
+
+.logo-container {
+  position: relative;
+  height: 75px; // Fixed height to keep the timeline aligned
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+  overflow: hidden;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba($accent1, 0.2),
+      transparent
+    );
+    skewx: -20deg;
+  }
+
+  .company-logo {
+    max-height: 100%;
+    max-width: 140px;
+    object-fit: contain;
+    filter: grayscale(75%) contrast(0);
+    opacity: 0.75; // Dims them significantly
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none; // Let the parent .timeline-item handle the hover
+
+    &[alt*="Wipro"] {
+      transform: scale(1.4); // Boosts size by 40%
+    }
+  }
+
+  .logo-fallback {
+    font-family: $code-font;
+    border: 1px solid $accent1;
+    padding: 5px 10px;
+    color: $accent1;
+  }
+}
+
+.timeline-item:hover {
+  .company-logo {
+    opacity: 1;
+
+    // Maintain the scale boost on hover
+    &[alt*="Wipro"] {
+      transform: scale(1.5);
+    }
+
+    &:not([alt*="Wipro"]) {
+      transform: scale(1.1);
+    }
+  }
+}
+
+.timeline-item:hover .logo-container::after {
+  left: 150%;
+  transition: left 0.6s ease-in-out;
+}
+
 .timeline-item {
+  flex: 1;
+  min-width: 250px;
+  padding: 0 20px;
   position: relative;
   z-index: 2;
   width: 200px;
   text-align: center;
+
+  .achievement-box {
+    margin-top: 15px;
+    font-size: 0.75rem;
+    color: $accent1;
+    background: rgba($accent1, 0.05);
+    border-left: 2px solid $accent1;
+    padding: 8px;
+    text-align: left;
+
+    // Hidden by default
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    pointer-events: none; // Prevents accidental mouse interference
+
+    .cmd-prefix {
+      font-weight: bold;
+      margin-right: 5px;
+    }
+  }
+
+  &:hover {
+    .achievement-box {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .timeline-dot {
+      background: $darkbgColor;
+      border-color: $accent1;
+      box-shadow: 0 0 15px $accent1;
+    }
+  }
+
+  .org-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+
+    .org-logo-placeholder {
+      font-size: 0.7rem;
+      font-weight: bold;
+      color: $accent1;
+      border: 1px solid $accent1;
+      padding: 4px 8px;
+      margin-bottom: 5px;
+      border-radius: 4px;
+      background: rgba($accent1, 0.05);
+    }
+
+    .org-name {
+      font-size: 0.75rem;
+      opacity: 0.7;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+  }
+
+  h4 {
+    font-size: 0.95rem;
+    color: $lightTextColor;
+    margin-bottom: 5px;
+  }
+
+  .duration {
+    font-size: 0.8rem;
+    color: $accent1; // Highlights the time period
+    opacity: 0.9;
+  }
+
   .timeline-dot {
     width: 30px;
     height: 30px;
@@ -28,16 +173,119 @@
     border-radius: 50%;
     margin: 0 auto 15px;
     transition: 0.3s;
+
+    &.active-dot {
+      background: $accent1;
+      box-shadow: 0 0 0 0 rgba($accent1, 0.7);
+      animation: pulse-dot 2s infinite;
+    }
   }
+
   &:hover .timeline-dot {
     transform: scale(1.3);
   }
+
   h4 {
     margin: 0;
     color: $lightTextColor;
   }
+
   p {
     font-size: 0.85rem;
     color: $darkTextColor;
+  }
+}
+
+@keyframes pulse-dot {
+  0% {
+    box-shadow: 0 0 0 0 rgba($accent1, 0.7);
+  }
+
+  70% {
+    box-shadow: 0 0 0 15px rgba($accent1, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba($accent1, 0);
+  }
+}
+
+@media (max-width: 768px) {
+  .timeline {
+    display: flex;
+    position: relative;
+    flex-direction: column; // Stack items vertically
+    align-items: flex-start;
+    padding-left: 0; // Space for the vertical line
+    margin-top: 30px;
+    gap: 40px; // Vertical gap between jobs
+
+    &::before {
+      content: "";
+      position: absolute;
+      width: 2px;
+      height: auto; // Line now runs top to bottom
+      left: 32.5px; // Positions line behind the dots
+      top: 15px;
+      bottom: 15px;
+      background: rgba($accent1, 0.3);
+    }
+  }
+
+  .timeline-item {
+    width: 100%;
+    text-align: left; // Align text to the left
+    display: flex;
+    flex-direction: row; // Dot on left, content on right
+    gap: 25px;
+    min-width: auto;
+    z-index: 2;
+    align-items: flex-start;
+    &:hover .logo-container::after {
+      animation: none;
+      left: -100%;
+    }
+
+    .timeline-dot {
+      width: 30px;
+      height: 30px;
+      margin: 0; // Remove the centering margin
+      flex-shrink: 0;
+      border: 4px solid $darkbgColor;
+      border-radius: 50%;
+      position: relative;
+    }
+
+    .timeline-content {
+      text-align: left;
+      padding-top: 2px;
+
+      .logo-container {
+        justify-content: flex-start; // Align logos to the left on mobile
+        height: 40px;
+        margin-bottom: 10px;
+        &:active::after {
+          left: 150%;
+          transition: left 0.6s ease-in-out;
+        }
+
+        .company-logo {
+          margin-left: 5px;
+          opacity: 1; // Show full color on mobile since there's no hover
+        }
+      }
+
+      h4 {
+        font-size: 1.1rem;
+      }
+    }
+  }
+
+  .timeline-item:hover {
+    .company-logo {
+      &[alt*="Wipro"] {
+        transform: scale(1.6);
+      }
+    }
   }
 }

@@ -5,11 +5,10 @@ title: My Projects
 
 <section id="Works" class="projects-section" style="display: block; padding-top: 100px;">
   <div class="container reveal">
-    <h1 class="section-title">/home/tamizh/portfolio/projects</h1>
-
+  
     <div class="terminal-window">
       <div class="terminal-header">
-        <span>projects.sh — 80x24</span>
+        <span>/home/tamizh/portfolio/projects</span>
       </div>
 
       <div class="terminal-body">

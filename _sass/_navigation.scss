@@ -46,16 +46,17 @@
   .home-trigger {
     color: $accent1;
     padding: 8px;
-    margin-right: 10px;
-    border-right: 1px solid rgba($accent1, 0.2);
+    margin-right: 15px;
+    border-right: 1px solid rgba($accent1-glow, 0.2);
     font-size: 1.1rem;
     display: flex;
     align-items: center;
-    transition: transform 0.2s ease;
+    justify-content: center;
+    transition: transform 0.2s ease-in;
 
     &:hover {
       transform: scale(1.1);
-      color: $lightTextColor;
+      color: $accent2;
     }
   }
 

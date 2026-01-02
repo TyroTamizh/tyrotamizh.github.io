@@ -1,0 +1,13 @@
+- designation: Senior Test Engineer
+  company: Wipro Technologies
+  logo: wipro.svg
+  duration: 2023 - Present
+  status: current
+  highlight: "Reduced regression suite execution time by 40%."
+
+- designation: Junior Automation Engineer
+  company: TATA Consultancy Services
+  logo: tcs.svg
+  duration: 2021 - 2023
+  status: past
+  highlight: "Automated 200+ manual test cases for core banking."

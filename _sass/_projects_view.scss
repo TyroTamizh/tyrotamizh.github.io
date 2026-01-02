@@ -201,7 +201,7 @@
 
   .card-back {
     background: $darkbgColor;
-    color: $lightTextColor;
+    color: $accent2;
     transform: rotateY(180deg);
     text-align: left;
     font-size: 0.85rem;
@@ -212,7 +212,7 @@
       padding-left: 15px;
       li {
         margin-bottom: 5px;
-        color: $accent1;
+        color: $accent2;
       }
     }
   }
@@ -280,7 +280,7 @@
       padding-left: 10px;
       li::before {
         content: "→ ";
-        color: $accent1;
+        color: $accent2;
       }
     }
 

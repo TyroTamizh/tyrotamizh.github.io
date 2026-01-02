@@ -8,11 +8,11 @@
 }
 
 .terminal-header {
-  background: #16464d;
+  background: $terminalHeader;
   padding: 8px 15px;
   color: $accent1;
   font-size: 0.8rem;
-  text-align: center;
+  // text-align: center;
   border-bottom: 1px solid rgba($accent1, 0.1);
 }
 
@@ -23,10 +23,11 @@
 
 .directory-header {
   display: flex;
-  color: $lightbgColor; // Dimmed color for headers
+  font-weight: bold;
+  color: $darkTextColor; // Dimmed color for headers
   font-size: 0.75rem;
   padding-bottom: 10px;
-  border-bottom: 1px solid rgba($accent1, 0.1);
+  border-bottom: 1px solid $accent1-glow;
   margin-bottom: 15px;
 
   .col {
@@ -66,7 +67,7 @@
     color: #2ecc71;
   } // Green for active user
   .size {
-    color: #f1c40f;
+    color: $accent2;
   } // Yellow for data size
 
   .name a {
@@ -89,12 +90,12 @@
   display: flex;
   justify-content: flex-start;
   gap: 30px;
-  background: #16464d;
+  background: $terminalHeader;
   padding: 5px 20px;
   border-radius: 0 0 8px 8px; // Attaches to the bottom of the window
   font-family: $code-font;
   font-size: 0.75rem;
-  border: 1px solid rgba($accent1, 0.3);
+  border: 1px solid $accent1-glow;
   border-top: none;
 
   .status-item {

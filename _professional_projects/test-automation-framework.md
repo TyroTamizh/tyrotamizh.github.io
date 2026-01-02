@@ -1,5 +1,5 @@
 ---
-layout: professional
+layout: projectview
 title: "E2E Selenium Framework"
 company: "Wipro"
 domain: "BFSI"

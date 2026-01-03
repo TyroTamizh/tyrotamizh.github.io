@@ -59,7 +59,7 @@
     color: rgba($darkbgColor, 0.4);
     &.active {
       color: $darkbgColor; // Brightest color for active
-        transform: translateX(20px);
+        transform: scale(1);
         opacity: 1;
         text-shadow: 2px 2px 0px $lightbgColor;
     }

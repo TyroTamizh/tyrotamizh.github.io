@@ -1,30 +1,13 @@
 .trait {
-  background: linear-gradient(
-    to bottom,
-    darken($lightbgColor, 10%) 0%,
-    $lightbgColor 20%,
-    $lightbgColor 80%,
-    darken($lightbgColor, 10%) 100%
-  );
+  background-color: $lightbgColor;
+  background-image: 
+  linear-gradient($darkTextColor 1px, transparent 1px), 
+  linear-gradient(90deg, $darkTextColor 1px, transparent 1px);
+background-size: 20px 20px;
   color: $darkTextColor;
   font-family: $code-font;
   position: relative;
-  border-top: 2px solid rgba($lightTextColor, 0.1);
-  border-bottom: 2px solid rgba($lightTextColor, 0.1);
-  
-  box-shadow: inset 0 0 50px rgba(0,0,0,0.2);
-  &::after {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: linear-gradient(
-      135deg,
-      rgba(255, 255, 255, 0.05) 0%,
-      transparent 50%,
-      rgba(0, 0, 0, 0.05) 100%
-    );
-    pointer-events: none;
-  }
+  background: linear-gradient();
   .container {
     display: flex;
     justify-content: space-between;
@@ -54,7 +37,7 @@
     font-size: 2.5em;
     font-weight: bold;
     transform: scale(0.7);
-    opacity: 0.25;
+    opacity: 0.5;
     transition: all 0.5s;
     color: rgba($darkbgColor, 0.4);
     &.active {

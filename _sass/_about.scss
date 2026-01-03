@@ -107,23 +107,27 @@
 @media (max-width: 768px) {
   .system-spec-container {
     margin: 40px auto; // Standardized spacing
-    padding: 0 15px;
+    padding: 0;
     width: 100%;
     box-sizing: border-box; // Vital for preventing padding-based overflow
     overflow-x: hidden;    // Extra safety against side-scrolling
 
     .spec-grid {
-      grid-template-columns: 1fr !important; // Single column
+      //grid-template-columns: 1fr !important; // Single column
       gap: 30px; // Vertical spacing between stacked cards
       width: 100%;
       margin: 0;
+      display: flex;
+      flex-direction: column;
+      padding: 0 20px;
     }
 
     .spec-card {
       margin: 0; // REMOVE the 10px margin; it was causing the overflow!
       width: 100%;
       box-sizing: border-box;
-      
+      word-wrap: break-word;
+      overflow-wrap: break-word;
       // Ensure the "Absolute" header doesn't get cut off
       .card-header {
         font-size: 0.7rem; 
@@ -133,6 +137,7 @@
 
     .spec-header {
       margin-bottom: 40px;
+      padding: 0 25px;
       h1 { font-size: 1.6rem; line-height: 1.2; }
     }
   }

@@ -106,25 +106,34 @@
 
 @media (max-width: 768px) {
   .system-spec-container {
-    margin: 60px auto; // Reduce top margin on mobile
+    margin: 40px auto; // Standardized spacing
     padding: 0 15px;
-    //overflow: visible;
+    width: 100%;
+    box-sizing: border-box; // Vital for preventing padding-based overflow
+    overflow-x: hidden;    // Extra safety against side-scrolling
 
     .spec-grid {
-      display: grid;
-      grid-template-columns: 1fr !important; // Forces 1 column
-      // width: 100%;
+      grid-template-columns: 1fr !important; // Single column
+      gap: 30px; // Vertical spacing between stacked cards
+      width: 100%;
+      margin: 0;
     }
 
     .spec-card {
-      margin: 10px; 
+      margin: 0; // REMOVE the 10px margin; it was causing the overflow!
+      width: 100%;
+      box-sizing: border-box;
+      
+      // Ensure the "Absolute" header doesn't get cut off
+      .card-header {
+        font-size: 0.7rem; 
+        left: 10px;
+      }
     }
 
     .spec-header {
-      margin-bottom: 30px;
-      h1 {
-        font-size: 1.5rem;
-      } // Scale down header text
+      margin-bottom: 40px;
+      h1 { font-size: 1.6rem; line-height: 1.2; }
     }
   }
 }

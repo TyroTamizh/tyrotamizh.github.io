@@ -108,16 +108,16 @@
   .system-spec-container {
     margin: 60px auto; // Reduce top margin on mobile
     padding: 0 15px;
+    //overflow: visible;
 
     .spec-grid {
       display: grid;
       grid-template-columns: 1fr !important; // Forces 1 column
-      width: 100%;
+      // width: 100%;
     }
 
     .spec-card {
-      margin: 10px; // Add spacing between stacked cards
-      width: max-content;
+      margin: 10px; 
     }
 
     .spec-header {

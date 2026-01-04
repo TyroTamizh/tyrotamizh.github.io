@@ -1,20 +1,10 @@
 .skills {
-  background-color: $lightbgColor;
-  background-image: linear-gradient(rgba($accent2, 0.07) 1px, transparent 1px),
-    linear-gradient(90deg, rgba($accent2, 0.07) 1px, transparent 1px);
-  background-size: 40px 40px;
+  background-color: $darkbgColor;
+  background-attachment: fixed;
+  background-image: 
+    radial-gradient(circle at bottom left, $lightbgColor 25%, transparent 75%, $lightbgColor 100%),
+    radial-gradient(circle at top right, $lightbgColor 25%, transparent 75%, $lightbgColor 100%);
   position: relative;
-  &::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(
-      circle at center,
-      transparent,
-      $lightbgColor 90%
-    );
-    pointer-events: none;
-  }
 }
 
 .section-title {

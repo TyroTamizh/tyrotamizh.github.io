@@ -117,6 +117,9 @@
 }
 
 @media (max-width: 768px) {
+  .terminal-footer-status{
+    font-size: 15px;
+  }
   .perm,
   .owner,
   .size {

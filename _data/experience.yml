@@ -5,9 +5,23 @@
   status: current
   highlight: "Reduced regression suite execution time by 40%."
 
-- designation: Junior Automation Engineer
+- designation: IT Analyst
   company: TATA Consultancy Services
   logo: tcs.svg
-  duration: 2021 - 2023
+  duration: Jul 2024 - Dec 2024
   status: past
-  highlight: "Automated 200+ manual test cases for core banking."
+  highlight: "From Newbie to Application SME"
+
+- designation: System Engineer
+  company: TATA Consultancy Services
+  logo: tcs.svg
+  duration: Oct 2022 - Jul 2024
+  status: past
+  highlight: "From Newbie to Application SME"
+
+- designation: Asst. System Engineer - Trainee
+  company: TATA Consultancy Services
+  logo: tcs.svg
+  duration: Oct 2020 - Oct 2022
+  status: past
+  highlight: "From Newbie to Application SME"

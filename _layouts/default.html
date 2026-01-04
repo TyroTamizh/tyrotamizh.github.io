@@ -41,12 +41,12 @@
     {{ content }}
   </main>
 
-<footer class="system-footer">
+  <footer class="system-footer">
   <div class="footer-bar">
     <div class="footer-left hidden-mobile">
       <div class="footer-segment">
         <span class="status-label">SYS_UPTIME:</span>
-        <span class="status-value">4.2_YRS</span>
+        <span class="status-value">{{site.data.details.experience}}_YRS</span>
       </div>
       <div class="footer-segment">
         <span class="status-label">LOC:</span>
@@ -55,7 +55,7 @@
     </div>
 
     <div class="footer-center">
-      <p>&copy; {{ "now" | date: "%Y" }} Tamizh Selvan Johnson. <br><span class="engine"> Built with Jekyll </span></p>
+      <p>&copy; {{ "now" | date: "%Y" }} Tamizh Selvan Johnson. <br><span class="engine"> Built with Jekyll. Published in Github Pages.</span></p>
     </div>
 
     <div class="footer-right">

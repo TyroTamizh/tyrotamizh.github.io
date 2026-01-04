@@ -1,13 +1,23 @@
 .trait {
   background-color: $lightbgColor;
-  background-image: 
-  linear-gradient($darkTextColor 1px, transparent 1px), 
-  linear-gradient(90deg, $darkTextColor 1px, transparent 1px);
-background-size: 20px 20px;
+  background-image:radial-gradient(transparent 20%, rgba(120, 158, 163,0.55) 45%, transparent 100%);
   color: $darkTextColor;
   font-family: $code-font;
   position: relative;
-  background: linear-gradient();
+
+  &::after{
+    content: " ";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+     background: linear-gradient(
+      rgba(18, 16, 16, 0) 50%,
+      rgba(0, 0, 0, 0.05) 50%
+    );
+    background-size: 100% 8px;
+  }
   .container {
     display: flex;
     justify-content: space-between;
@@ -37,9 +47,9 @@ background-size: 20px 20px;
     font-size: 2.5em;
     font-weight: bold;
     transform: scale(0.7);
-    opacity: 0.5;
+    opacity: 0.25;
     transition: all 0.5s;
-    color: rgba($darkbgColor, 0.4);
+    color: rgba($accent1, 0.7);
     &.active {
       color: $darkbgColor; // Brightest color for active
         transform: scale(1);

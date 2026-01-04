@@ -173,6 +173,50 @@ document.addEventListener("DOMContentLoaded", () => {
   const grid = document.querySelector('.module-grid');
   if(grid) cardObserver.observe(grid);
 
+  /* =====================================================
+   * 3. Career Roadmap Carousel
+   * ===================================================== */
+  const timeline = document.getElementById('careerTimeline');
+  const nextBtn = document.getElementById('nextBtn');
+  const prevBtn = document.getElementById('prevBtn');
+
+  if (timeline && nextBtn && prevBtn) {
+    let counter = 0;
+
+    const updateCarousel = () => {
+      // Determine how many items are visible based on screen width
+      const isMobile = window.innerWidth <= 768;
+      const visibleItems = isMobile ? 1 : 3;
+      // Calculate move percentage (e.g., if 3 items, move by 33.33% each click)
+      const movePercentage = 100 / visibleItems;
+      timeline.style.transform = `translateX(-${counter * movePercentage}%)`;
+    }
+
+    nextBtn.addEventListener('click', () => {
+      const totalItems = timeline.querySelectorAll('.timeline-item').length;
+      const visibleItems = window.innerWidth > 768 ? 3 : 1;
+      
+      // Prevent scrolling past the last set of items
+      if (counter < (totalItems - visibleItems)) {
+        counter++;
+        updateCarousel();
+      }
+    });
+
+    prevBtn.addEventListener('click', () => {
+      if (counter > 0) {
+        counter--;
+        updateCarousel();
+      }
+    });
+
+    // Reset carousel on window resize to prevent layout "ghosting"
+    window.addEventListener('resize', () => {
+      counter = 0;
+      updateCarousel();
+    });
+  }
+  
 });
 
 // Contacts

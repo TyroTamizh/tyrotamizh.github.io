@@ -8,13 +8,13 @@ title: Contact
     <h1 class="section-title">Establish Link</h1>
     
     <div class="contact-pills">
-      <button class="pill" onclick="initiateConnection('email', 'mailto:your@email.com')">
+      <button class="pill" onclick="initiateConnection('email', 'mailto:tamizh602@gmail.com')">
         <i class="fas fa-envelope"></i> SMTP_INIT
       </button>
-      <button class="pill" onclick="initiateConnection('linkedin', 'https://linkedin.com/in/yourprofile')">
+      <button class="pill" onclick="initiateConnection('linkedin', 'https://linkedin.com/in/tamizh-selvan-johnson-093377176)">
         <i class="fab fa-linkedin"></i> TLS_HANDSHAKE
       </button>
-      <button class="pill" onclick="initiateConnection('github', 'https://github.com/yourusername')">
+      <button class="pill" onclick="initiateConnection('github', 'https://github.com/TyroTamizh')">
         <i class="fab fa-github"></i> SSH_CONNECT
       </button>
     </div>

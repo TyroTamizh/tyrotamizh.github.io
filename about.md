@@ -15,24 +15,27 @@ title: System_Profile
       <div class="card-header">CORE_IDENTITY</div>
       <div class="card-body">
         <p><span class="label">ALIAS:</span> Tamizh</p>
-        <p><span class="label">LOCATION:</span> Chennai, IN</p>
-        <p><span class="label">UPTIME:</span> [Your Experience] Years</p>
+        <p><span class="label">LOCATION:</span> Chennai, Tamil Nadu, India</p>
+        <p><span class="label">UPTIME:</span> {{site.data.details.experience}} Years</p>
       </div>
     </div>
 
     <div class="spec-card reveal">
       <div class="card-header">FIRMWARE_REVISIONS</div>
       <div class="card-body">
+
+      <div class="edu-item">
+          <p class="edu-title">Master of Business Administation</p>
+          <p class="edu-meta">OM & BA @ SRMIST, Chennai</p>
+          <p class="edu-date">VER: 2021 - 2024</p>
+        </div>
+
         <div class="edu-item">
           <p class="edu-title">Bachelor of Engineering</p>
-          <p class="edu-meta">Electronics & Communication // [Your College Name]</p>
-          <p class="edu-date">VER: 2017 - 2021</p>
+          <p class="edu-meta">ECE @ Panimalar Engineering College, Chennai</p>
+          <p class="edu-date">VER: 2016 - 2020</p>
         </div>
-        <div class="edu-item">
-          <p class="edu-title">Secondary Education</p>
-          <p class="edu-meta">[School Name]</p>
-          <p class="edu-date">VER: 2015 - 2017</p>
-        </div>
+
       </div>
     </div>
 
@@ -40,10 +43,9 @@ title: System_Profile
       <div class="card-header">BACKGROUND_PROCESSES</div>
       <div class="card-body">
         <div class="tags">
-          <span class="tag">PC_Gaming</span>
-          <span class="tag">Photography</span>
-          <span class="tag">Open_Source</span>
-          <span class="tag">UI/UX_Research</span>
+          {% for hobby in site.data.details.hobbies %}
+          <span class="tag">{{hobby}}</span>
+          {% endfor %}
         </div>
       </div>
     </div>
@@ -52,9 +54,9 @@ title: System_Profile
       <div class="card-header">VALIDATED_DRIVERS</div>
       <div class="card-body">
         <ul class="spec-list">
-          <li>ISTQB_Foundation_Level</li>
-          <li>AWS_Cloud_Practitioner</li>
-          <li>Selenium_Webdriver_Advanced</li>
+          {% for cert in site.data.details.certs %}
+          <li>{{cert}}</li>
+          {% endfor %}
         </ul>
       </div>
     </div>

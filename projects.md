@@ -14,7 +14,7 @@ title: My Projects
       <div class="terminal-body">
         <div class="directory-header">
           <span class="col">PERMISSIONS</span>
-          <span class="col">OWNER</span>
+          <span class="col">DATE</span>
           <span class="col">SIZE</span>
           <span class="col">NAME</span>
         </div>
@@ -23,8 +23,8 @@ title: My Projects
           {% for project in site.professional_projects %}
           <div class="project-item">
             <span class="perm">drwxr-xr-x</span>
-            <span class="owner">pro</span>
-            <span class="size">4.0K</span>
+            <span class="time">{{project.duration}}</span>
+            <span class="size">{{ project.title.size | times: 1.0 | divided_by: project.tools.size | round: 2 }}K</span>
             <span class="name">
               <a href="{{ project.url | relative_url }}">{{ project.title }}</a>
               <span class="role-tag">[{{ project.role }}]</span>
@@ -35,8 +35,8 @@ title: My Projects
           {% for project in site.academic_projects %}
           <div class="project-item">
             <span class="perm">-rw-r--r--</span>
-            <span class="owner">acad</span>
-            <span class="size">2.1K</span>
+            <span class="time">{{project.duration}}</span>
+            <span class="size">{{ project.title.size | times: 1.0 | divided_by: project.tools.size | round: 2 }}K</span>
             <span class="name">
               <a href="{{ project.url | relative_url }}">{{ project.title }}</a>
             </span>
@@ -50,11 +50,11 @@ title: My Projects
         <span class="status-label">TOTAL_PROJECTS:</span>
         <span class="status-value">{{ site.professional_projects.size | plus: site.academic_projects.size }}</span>
       </div>
-      <div class="status-item">
+      <div class="status-item hidden-mobile">
         <span class="status-label">LAST_SCAN:</span>
         <span class="status-value" id="current-date"></span>
       </div>
-      <div class="status-item hidden-mobile">
+      <div class="status-item">
         <span class="status-label">BUILD_STATUS:</span>
         <span class="status-value green">SUCCESS [0 errors]</span>
       </div>

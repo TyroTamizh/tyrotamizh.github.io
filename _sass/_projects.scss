@@ -63,7 +63,7 @@
   .perm {
     color: $lightbgColor;
   }
-  .owner {
+  .time {
     color: #2ecc71;
   } // Green for active user
   .size {
@@ -118,10 +118,11 @@
 
 @media (max-width: 768px) {
   .terminal-footer-status{
-    font-size: 15px;
+    font-size: 13px;
+    justify-content: space-between;
   }
   .perm,
-  .owner,
+  .time,
   .size {
     display: none;
   }

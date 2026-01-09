@@ -76,6 +76,42 @@ title: Home
   </div>
 </section>
 
+<section class="awards-section" id="Awards">
+  <div class="container reveal">
+    <h1 class="section-title">Recognition_Log</h1>
+
+    <div class="terminal-window">
+      <div class="terminal-header">
+        <span class="dot red"></span>
+        <span class="dot yellow"></span>
+        <span class="dot green"></span>
+        <span class="terminal-title">awards_output.log</span>
+      </div>
+      
+      <div class="terminal-body">
+        <div class="awards-list">
+          {% for award in site.data.awards %}
+          <div class="award-entry">
+            <div class="entry-header">
+              <span class="entry-year">[{{ award.year }}]</span>
+              <span class="entry-status">SUCCESS</span>
+            </div>
+            <div class="entry-content">
+              <i class="{{ award.icon }} award-glyph"></i>
+              <div class="text-group">
+                <h3>{{ award.title }}</h3>
+                <p class="issuer">SRC: {{ award.issuer }}</p>
+                <p class="desc">{{ award.description }}</p>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="skills" id="Skills">
   <div class="container reveal">
     <h1 class="section-title">Technical Toolbox</h1>

@@ -1,0 +1,188 @@
+/* --- Awards Section Main --- */
+.awards-section {
+  padding: 80px 0;
+  background: $darkbgColor;
+
+  .section-title {
+    margin-bottom: 40px;
+  }
+}
+
+/* --- Filter Navigation --- */
+.awards-filter {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+
+  .filter-btn {
+    background: rgba($darkbgColor, 0.5);
+    border: 1px solid rgba($accent1, 0.3);
+    color: $accent1;
+    font-family: $code-font;
+    padding: 8px 20px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: 0.3s;
+    text-transform: uppercase;
+
+    &:hover, &.active {
+      background: $accent1;
+      color: $darkbgColor;
+      box-shadow: 0 0 15px rgba($accent1, 0.4);
+      border-color: $accent1;
+    }
+  }
+}
+
+/* --- Terminal Window Container --- */
+.terminal-window {
+  // EXPANDED WIDTH: Changed from 850px to 95% of container up to 1200px
+  width: 95%;
+  max-width: 1200px; 
+  margin: 0 auto;
+  background: #0d0d0d;
+  border: 1px solid rgba($accent1, 0.3);
+  border-radius: 8px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+
+  .terminal-header {
+    background: #1a1a1a;
+    padding: 12px 25px; // Increased side padding
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba($accent1, 0.1);
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      margin-right: 8px;
+      &.red { background: #ff5f56; }
+      &.yellow { background: #ffbd2e; }
+      &.green { background: #27c93f; }
+    }
+
+    .terminal-title {
+      color: #666;
+      font-family: $code-font;
+      font-size: 0.75rem;
+      margin-left: 10px;
+      letter-spacing: 1px;
+    }
+  }
+
+  .terminal-body {
+    height: 550px; // Slightly taller to match the extra width
+    overflow-y: auto;
+    padding: 40px; // More padding for a spacious feel
+    
+    &::-webkit-scrollbar { width: 6px; }
+    &::-webkit-scrollbar-track { background: transparent; }
+    &::-webkit-scrollbar-thumb { 
+      background: rgba($accent1, 0.3); 
+      border-radius: 10px; 
+    }
+  }
+}
+
+/* --- Individual Award Entries (Log Style) --- */
+.award-entry {
+  position: relative;
+  padding: 30px; // Increased padding
+  background: rgba($lightbgColor, 0.03);
+  border-left: 3px solid rgba($accent1, 0.1);
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+  width: 100%; // Ensure it fills the wide container
+  box-sizing: border-box;
+
+  &.hidden { display: none; }
+
+  &:hover {
+    background: rgba($accent1, 0.05);
+    border-left-color: $accent1;
+    transform: translateX(8px); // Slightly more movement
+    
+    .award-glyph {
+      transform: scale(1.1);
+      color: $accent1;
+    }
+  }
+
+  .entry-header {
+    font-family: $code-font;
+    font-size: 0.8rem;
+    margin-bottom: 12px;
+    display: flex;
+    gap: 15px;
+
+    .entry-year { color: $accent1; font-weight: bold; }
+    .entry-status { color: #27c93f; opacity: 0.8; }
+  }
+
+  .entry-content {
+    display: flex;
+    gap: 30px; // Wider gap between icon and text
+    align-items: flex-start;
+
+    .award-glyph {
+      font-size: 2rem; // Slightly larger for the wide screen
+      color: rgba($accent1, 0.6);
+      transition: 0.3s;
+      margin-top: 5px;
+      flex-shrink: 0;
+    }
+
+    .text-group {
+      flex: 1; // Allows text to fill remaining horizontal space
+
+      h3 {
+        font-size: 1.2rem;
+        color: $lightTextColor;
+        margin: 0;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .issuer {
+        font-family: $code-font;
+        font-size: 0.9rem;
+        color: $accent1;
+        margin: 6px 0;
+        display: block;
+      }
+
+      .desc {
+        font-size: 1rem;
+        color: rgba($lightTextColor, 0.75);
+        line-height: 1.6;
+        margin-top: 10px;
+        padding-top: 10px;
+        border-top: 1px dashed rgba($accent1, 0.1);
+        max-width: 900px; // Keeps text from stretching too far for readability
+      }
+    }
+  }
+
+  .award-corner {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 20px;
+    height: 20px;
+    background: linear-gradient(225deg, rgba($accent1, 0.3) 50%, transparent 50%);
+  }
+}
+
+/* Mobile Responsive Adjustments */
+@media (max-width: 768px) {
+  .terminal-window { width: 100%; }
+  .terminal-body { height: 450px; padding: 15px; }
+  .award-entry {
+    padding: 20px;
+    .entry-content { flex-direction: column; gap: 15px; }
+  }
+}

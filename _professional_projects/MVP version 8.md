@@ -7,7 +7,9 @@ category: "BFSI"
 tools: [ConformIQ, Java-Selenium, HP-ALM]
 status: "DEPLOYED"
 objective: "To introduce payout feature on liabilities for the credit application"
-duration: "2022 - 2023"
+duration: 2
+startYr: "02-2022"
+endYr: "10-2023"
 ---
 #### Key Deliverables:
 * Generated testcases using Conformiq and handled **automation scripts for regression**

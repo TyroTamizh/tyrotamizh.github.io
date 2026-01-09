@@ -7,7 +7,9 @@ category: "BFSI"
 tools: [Jmeter, C#, FlaUI, MS SQL Server]
 status: "INPROGRESS"
 objective: "To scale and rebuild a legacy investor reporting system to support huge volumes of loans"
-duration: "2025*"
+duration: 6
+startYr: "06-2025"
+endYr: "***"
 ---
 #### Key Deliverables:
 * Build a **Performance Testing suite** using Jmeter

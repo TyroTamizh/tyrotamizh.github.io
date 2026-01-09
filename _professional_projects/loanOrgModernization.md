@@ -7,7 +7,9 @@ category: "BFSI"
 tools: [Playwright-JS, MongoDB, Postman, Jmeter, Azure Board]
 status: "DEPLOYED"
 objective: "To focus on reducing the loan cycle time of loan origination and processing"
-duration: "2025"
+duration: 5
+startYr: "01-2025"
+endYr: "06-2025"
 ---
 #### Key Deliverables:
 * Collaborated with the development and product team, ensuring the smooth production release on alternative sprints, with zero production bugs

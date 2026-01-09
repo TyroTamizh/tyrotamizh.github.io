@@ -7,7 +7,9 @@ category: "BFSI"
 tools: [ConformIQ, Robot Framework, Parasoft SOAtest]
 status: "DEPLOYED"
 objective: "To automate credit calculators used by bank associates in the adjudication process for credit applications"
-duration: "[02-12] 2024"
+duration: 4
+startYr: "02-2024"
+endYr: "12-2024"
 ---
 #### Key Deliverables:
 * **Involved in the requirement analysis** phase by performing baseline testing involving multiple complex applications 

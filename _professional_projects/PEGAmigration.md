@@ -7,7 +7,9 @@ category: "BFSI"
 tools: [ConformIQ, Robot Framework, Parasoft SOAtest]
 status: "DEPLOYED"
 objective: "To migrate the middleware application into PEGA system"
-duration: "2023 - 2024"
+duration: 3
+startYr: "10-2023"
+endYr: "02-2024"
 ---
 #### Key Deliverables:
 * Led a **module-level internal team of 5**, including tracking, reviewing, and assisting the internal team in their test execution

@@ -1,0 +1,17 @@
+- title: "Spot Award"
+  category: "Professional"
+  issuer: "Wipro"
+  year: "2024"
+  icon: "fas fa-award"
+
+- title: "University Gold Medallist (MBA)"
+  category: "Academic"
+  issuer: "SRM University"
+  year: "2024"
+  icon: "fas fa-graduation-cap"
+
+- title: "Academic Topper (SSLC & HSC)"
+  category: "Academic"
+  issuer: "Dr.SAMHSS"
+  year: "2014 and 2016"
+  icon: "fas fa-graduation-cap"

@@ -6,7 +6,7 @@ title: System_Profile
 <section class="system-spec-container">
   <div class="spec-header">
     <h1 class="glitch-text" data-text="SYSTEM_SPECIFICATION">SYSTEM_SPECIFICATION</h1>
-    <p class="subtitle">Unit ID: TAMIZH <br> Role: Automation_Engineer</p>
+    <p class="subtitle">Unit ID: TAMIZH SELVAN JOHNSON<br> Role: Automation_Engineer</p>
   </div>
 
   <div class="spec-grid">
@@ -14,9 +14,9 @@ title: System_Profile
     <div class="spec-card reveal">
       <div class="card-header">CORE_IDENTITY</div>
       <div class="card-body">
-        <p><span class="label">ALIAS:</span> Tamizh</p>
-        <p><span class="label">LOCATION:</span> Chennai, Tamil Nadu, India</p>
-        <p><span class="label">UPTIME:</span> {{site.data.details.experience}} Years</p>
+        <p><span class="label">ALIAS:</span> Tyro</p>
+        <p><span class="label">LOCATION:</span> Chennai, TN, India</p>
+        <p><span class="label">UPTIME:</span>  {% include tenure.html %} Years</p>
       </div>
     </div>
 

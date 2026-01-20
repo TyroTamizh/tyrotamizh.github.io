@@ -118,7 +118,7 @@ title: Home
     <div class="skills-grid">
 
       <div class="skill-category">
-        <h3><i class="fas fa-code"></i> Scripting Mastery</h3>
+        <h3><i class="fas fa-code"></i> Automation Frameworks</h3>
         <ul>
           {% for skill in site.data.framework %}
           <li class="skill-row">
@@ -150,7 +150,7 @@ title: Home
       </div>
 
       <div class="skill-category">
-        <h3><i class="fas fa-code"></i> Scripting Mastery</h3>
+        <h3><i class="fas fa-code"></i> Software Tools</h3>
         <ul>
           {% for skill in site.data.bundle %}
           <li class="skill-row">

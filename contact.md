@@ -11,7 +11,7 @@ title: Contact
       <button class="pill" onclick="initiateConnection('email', 'mailto:tamizh602@gmail.com')">
         <i class="fas fa-envelope"></i> SMTP_INIT
       </button>
-      <button class="pill" onclick="initiateConnection('linkedin', 'https://linkedin.com/in/tamizh-selvan-johnson-093377176)">
+      <button class="pill" onclick="initiateConnection('linkedin', 'https://linkedin.com/in/tamizh-selvan-johnson-093377176')">
         <i class="fab fa-linkedin"></i> TLS_HANDSHAKE
       </button>
       <button class="pill" onclick="initiateConnection('github', 'https://github.com/TyroTamizh')">

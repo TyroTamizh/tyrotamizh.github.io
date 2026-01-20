@@ -1,0 +1,5 @@
+{% assign start_date = "2020-10-01" | date: "%s" | plus: 0.0 %}
+{% assign now_date = "now" | date: "%s" | plus: 0.0 %}
+{% assign seconds_in_year = 31536000.0 %}
+{% assign diff_years = now_date | minus: start_date | divided_by: seconds_in_year %}
+{{ diff_years | round: 1 }}

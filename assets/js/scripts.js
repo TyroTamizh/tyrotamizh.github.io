@@ -3,17 +3,19 @@ document.addEventListener("DOMContentLoaded", () => {
   const sections = document.querySelectorAll("section, .hero");
   const paletteText = document.getElementById("palette-text");
 
+  // Fires when a section crosses the vertical middle of the viewport.
+  // (A fixed visibility threshold never triggers on tall sections.)
   const observerOptions = {
-    threshold: 0.6, // Change text when 60% of section is visible
+    rootMargin: "-50% 0px -50% 0px",
+    threshold: 0,
   };
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        // Find the matching path from our navigation logic
-        const id = entry.target.getAttribute("id");
-        if (id) {
-          paletteText.textContent = `Location: /${id}`;
+      if (entry.isIntersecting && paletteText) {
+        const label = entry.target.dataset.label || entry.target.id;
+        if (label) {
+          paletteText.textContent = `Location: /${label}`;
         }
       }
     });
@@ -21,33 +23,49 @@ document.addEventListener("DOMContentLoaded", () => {
 
   sections.forEach((section) => observer.observe(section));
 
-  // Typing metadata
-  const text = " Tamizh";
+  // Typing metadata (home page only)
+  const text = "Tamizh";
   const speed = 150; // Milliseconds per character
   const typewriter = document.getElementById("typewriter");
   const delayedElements = document.querySelectorAll(".fade-in-delayed");
+  const prefersReducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
 
-  let i = 0;
-
-  function type() {
-    if (i < text.length) {
-      typewriter.textContent += text.charAt(i);
-      i++;
-      setTimeout(type, speed);
-    } else {
-      requestAnimationFrame(() => {
-        delayedElements.forEach((el, index) => {
-          // Stagger the buttons/subtitle slightly
-          setTimeout(() => {
-            el.classList.add("visible");
-          }, index * 200);
-        });
+  const revealDelayed = () => {
+    requestAnimationFrame(() => {
+      delayedElements.forEach((el, index) => {
+        // Stagger the buttons/subtitle slightly
+        setTimeout(() => {
+          el.classList.add("visible");
+        }, index * 200);
       });
+    });
+  };
+
+  if (typewriter) {
+    // The name is in the markup as a no-JS fallback.
+    if (prefersReducedMotion) {
+      typewriter.textContent = text;
+      revealDelayed();
+    } else {
+      typewriter.textContent = "";
+      let i = 0;
+
+      const type = () => {
+        if (i < text.length) {
+          typewriter.textContent += text.charAt(i);
+          i++;
+          setTimeout(type, speed);
+        } else {
+          revealDelayed();
+        }
+      };
+
+      // Start typing after a small initial delay
+      setTimeout(type, 800);
     }
   }
-
-  // Start typing after a small initial delay
-  setTimeout(type, 800);
 
   /* =====================================================
    * 1. Scroll Reveal
@@ -181,40 +199,76 @@ document.addEventListener("DOMContentLoaded", () => {
   const prevBtn = document.getElementById('prevBtn');
 
   if (timeline && nextBtn && prevBtn) {
+    const viewport = timeline.parentElement;
+    const status = document.getElementById('carouselStatus');
     let counter = 0;
 
-    const updateCarousel = () => {
-      // Determine how many items are visible based on screen width
-      const isMobile = window.innerWidth <= 768;
-      const visibleItems = isMobile ? 1 : 3;
-      // Calculate move percentage (e.g., if 3 items, move by 33.33% each click)
-      const movePercentage = 100 / visibleItems;
-      timeline.style.transform = `translateX(-${counter * movePercentage}%)`;
-    }
+    const getVisible = () => (window.innerWidth <= 768 ? 1 : 3);
+    const getTotal = () => timeline.querySelectorAll('.timeline-item').length;
+    const getMax = () => Math.max(0, getTotal() - getVisible());
 
-    nextBtn.addEventListener('click', () => {
-      const totalItems = timeline.querySelectorAll('.timeline-item').length;
-      const visibleItems = window.innerWidth > 768 ? 3 : 1;
-      
-      // Prevent scrolling past the last set of items
-      if (counter < (totalItems - visibleItems)) {
+    const updateCarousel = () => {
+      const visible = getVisible();
+      const total = getTotal();
+      counter = Math.min(counter, getMax());
+
+      // Move by one item width (e.g. 33.33% when 3 items are visible)
+      timeline.style.transform = `translateX(-${counter * (100 / visible)}%)`;
+
+      // Disable buttons at both ends
+      prevBtn.disabled = counter === 0;
+      nextBtn.disabled = counter >= getMax();
+
+      // Position indicator, e.g. "1–3 of 4" or "2 of 4"
+      if (status) {
+        const first = counter + 1;
+        const last = Math.min(counter + visible, total);
+        status.textContent =
+          first === last ? `${first} of ${total}` : `${first}\u2013${last} of ${total}`;
+      }
+    };
+
+    const goNext = () => {
+      if (counter < getMax()) {
         counter++;
         updateCarousel();
       }
-    });
+    };
 
-    prevBtn.addEventListener('click', () => {
+    const goPrev = () => {
       if (counter > 0) {
         counter--;
         updateCarousel();
       }
-    });
+    };
 
-    // Reset carousel on window resize to prevent layout "ghosting"
-    window.addEventListener('resize', () => {
-      counter = 0;
-      updateCarousel();
-    });
+    nextBtn.addEventListener('click', goNext);
+    prevBtn.addEventListener('click', goPrev);
+
+    // Touch swipe (horizontal swipes only, so vertical scrolling still works)
+    if (viewport) {
+      let startX = 0;
+      let startY = 0;
+
+      viewport.addEventListener('touchstart', (e) => {
+        startX = e.changedTouches[0].clientX;
+        startY = e.changedTouches[0].clientY;
+      }, { passive: true });
+
+      viewport.addEventListener('touchend', (e) => {
+        const dx = e.changedTouches[0].clientX - startX;
+        const dy = e.changedTouches[0].clientY - startY;
+        if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) {
+          if (dx < 0) goNext();
+          else goPrev();
+        }
+      }, { passive: true });
+    }
+
+    // Recalculate on resize (visible count can change between 1 and 3)
+    window.addEventListener('resize', updateCarousel);
+
+    updateCarousel(); // Initial state
   }
   
 });

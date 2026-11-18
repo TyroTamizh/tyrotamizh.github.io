@@ -3,25 +3,25 @@ layout: default
 title: Home
 ---
 
-<section class="hero" id="Landing Page">
+<section class="hero" id="landing" data-label="home">
   <div class="container hero-container">
     <div class="terminal-meta">
-      <span class="meta-prompt">></span> Querying database for 'innovation'... 100% matches found.
+      <span class="meta-prompt" aria-hidden="true">&gt;</span> Querying database for 'innovation'... 100% matches found.
     </div>
 
-    <h1 class="typing-container">
-      Hi, I'm&nbsp;<span id="typewriter"></span><span class="cursor">█</span>
+    <h1 class="typing-container" aria-label="Hi, I'm Tamizh">
+      Hi, I'm&nbsp;<span id="typewriter" aria-hidden="true">Tamizh</span><span class="cursor" aria-hidden="true">█</span>
     </h1>
 
     <p class="subtitle fade-in-delayed">Automation Engineer with an urge to learn new technologies.</p>
 
     <div class="hero-btns fade-in-delayed">
-      <a href="/projects" class="btn">View My Work</a>
+      <a href="{{ '/projects' | relative_url }}" class="btn">View My Work</a>
     </div>
   </div>
 </section>
 
-<section class="trait" id="Possibilities">
+<section class="trait" id="Possibilities" data-label="possibilities">
   <div class="container">
     <h1>I can</h1>
     <div class="list-wrapper">
@@ -37,9 +37,9 @@ title: Home
   </div>
 </section>
 
-<section class="work" id="Career Map">
+<section class="work" id="career-map" data-label="career-map">
   <div class="container reveal">
-    <h1 class="section-title" style="color: white;">Career Roadmap</h1>
+    <h1 class="section-title section-title--light">Career Roadmap</h1>
 
     <div class="timeline-viewport">
       <div class="timeline" id="careerTimeline">
@@ -49,7 +49,7 @@ title: Home
 
             <div class="logo-container">
               {% if job.logo %}
-              <img src="/assets/images/{{ job.logo }}" alt="{{ job.company }}" class="company-logo">
+              <img src="{{ '/assets/images/' | append: job.logo | relative_url }}" alt="{{ job.company }}" class="company-logo">
               {% else %}
               <span class="logo-fallback">{{ job.short_name }}</span>
               {% endif %}
@@ -59,8 +59,8 @@ title: Home
             
             <p class="duration">{{ job.duration }}</p>
 
-            <div class="achievement-box hidden-mobile">
-              <span class="cmd-prefix">></span> {{ job.highlight }}
+            <div class="achievement-box">
+              <span class="cmd-prefix" aria-hidden="true">&gt;</span> {{ job.highlight }}
             </div>
           </div>
         </div>
@@ -69,14 +69,15 @@ title: Home
     </div>
 
     <div class="carousel-controls">
-      <button id="prevBtn" class="ctrl-btn">&lt; PREV_LOG</button>
-      <button id="nextBtn" class="ctrl-btn">NEXT_LOG &gt;</button>
+      <button id="prevBtn" class="ctrl-btn" type="button" aria-label="Previous roles">&lt; PREV_LOG</button>
+      <span id="carouselStatus" class="carousel-status" aria-live="polite"></span>
+      <button id="nextBtn" class="ctrl-btn" type="button" aria-label="Next roles">NEXT_LOG &gt;</button>
     </div>
 
   </div>
 </section>
 
-<section class="awards-section" id="Awards">
+<section class="awards-section" id="Awards" data-label="awards">
   <div class="container reveal">
     <h1 class="section-title">Recognition_Log</h1>
 
@@ -97,7 +98,7 @@ title: Home
               <span class="entry-status">SUCCESS</span>
             </div>
             <div class="entry-content">
-              <i class="{{ award.icon }} award-glyph"></i>
+              <i class="{{ award.icon }} award-glyph" aria-hidden="true"></i>
               <div class="text-group">
                 <h3>{{ award.title }}</h3>
                 <p class="issuer">SRC: {{ award.issuer }}</p>
@@ -112,13 +113,13 @@ title: Home
   </div>
 </section>
 
-<section class="skills" id="Skills">
+<section class="skills" id="Skills" data-label="skills">
   <div class="container reveal">
     <h1 class="section-title">Technical Toolbox</h1>
     <div class="skills-grid">
 
       <div class="skill-category">
-        <h3><i class="fas fa-code"></i> Automation Frameworks</h3>
+        <h3><i class="fas fa-code" aria-hidden="true"></i> Automation Frameworks</h3>
         <ul>
           {% for skill in site.data.framework %}
           <li class="skill-row">
@@ -134,7 +135,7 @@ title: Home
       </div>
 
       <div class="skill-category">
-        <h3><i class="fas fa-code"></i> Scripting Mastery</h3>
+        <h3><i class="fas fa-code" aria-hidden="true"></i> Scripting Mastery</h3>
         <ul>
           {% for skill in site.data.swLang %}
           <li class="skill-row">
@@ -150,7 +151,7 @@ title: Home
       </div>
 
       <div class="skill-category">
-        <h3><i class="fas fa-code"></i> Software Tools</h3>
+        <h3><i class="fas fa-code" aria-hidden="true"></i> Software Tools</h3>
         <ul>
           {% for skill in site.data.bundle %}
           <li class="skill-row">
